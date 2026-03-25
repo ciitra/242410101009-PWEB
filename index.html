@@ -4,144 +4,190 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Studio LensArt - Sistem Booking Studio Foto</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <img src="logo-lensart.png" alt="Logo Studio LensArt" width="180">
-        <h1>Studio LensArt</h1>
-        <p>
-        Selamat datang di <strong>Studio LensArt</strong>. Website ini menyediakan
-        informasi mengenai layanan dan paket foto yang tersedia di studio kami.
-        </p>
-        <hr>
-    </header>
-
-    <nav>
-        <h2>Menu Navigasi</h2>
-        <ul>
+    <nav class="navbar">
+        <div class="logo">Studio LensArt</div>
+        <ul class="nav-menu">
             <li><a href="#beranda">Beranda</a></li>
             <li><a href="#paket">Paket Foto</a></li>
-            <li><a href="#daftar-booking">Daftar Booking</a></li>
+            <li><a href="#daftar-booking">Daftar Reservasi</a></li>
             <li><a href="#statistik">Statistik</a></li>
+            <li><a href="#kontak">Kontak</a></li>
         </ul>
-        <hr>
     </nav>
 
-    <main>
-        <section id="paket">
-            <h2>Paket Foto</h2>
-            <p><strong>Paket Indie</strong></p>
-            <p>Durasi 10 menit sesi foto, maksimal 2 orang, 1 lembar print, dan softcopy file.</p>
+    <header class="hero" id="beranda">
+        <div class="hero-overlay">
+            <img src="logo-lensart.png" alt="Logo Studio LensArt" class="hero-logo">
+            <h1>Selamat datang di Studio LensArt</h1>
+            <p>
+                Website ini menyediakan informasi paket foto serta data reservasi pelanggan
+                di Studio LensArt.
+            </p>
+        </div>
+    </header>
 
-            <p><strong>Paket LensArt</strong></p>
-            <p>Durasi 15 menit sesi foto, maksimal 4 orang, 2 lembar print, dan softcopy file.</p>
+    <main class="main-layout">
+        <aside class="sidebar">
+            <section class="filter-box">
+                <h2>Filter Reservasi</h2>
+                <label><input type="checkbox"> Paket Indie</label>
+                <label><input type="checkbox"> Paket LensArt</label>
+                <label><input type="checkbox"> Paket Kalcer</label>
+                <label><input type="checkbox"> Paket Custom</label>
+            </section>
 
-            <p><strong>Paket Kalcer</strong></p>
-            <p>Durasi 20 menit sesi foto, maksimal 6 orang, 4 lembar print, dan softcopy file.</p>
+            <section class="stat-box" id="statistik">
+                <h2>Statistik LensArt</h2>
+                <ul>
+                    <li>Total Booking Hari Ini: 5</li>
+                    <li>Total Booking Minggu Ini: 12</li>
+                    <li>Paket Terpopuler: LensArt</li>
+                    <li>Jadwal Tersedia Hari Ini: 4</li>
+                </ul>
+            </section>
+        </aside>
+
+        <section class="content">
+            <section id="paket" class="paket-section">
+                <h2 class="section-title">Paket Foto</h2>
+
+                <div class="card-grid">
+                    <article class="card">
+                        <h3>Paket Indie</h3>
+                        <p>Durasi 10 menit sesi foto, maksimal 2 orang, 1 lembar print, dan softcopy file.</p>
+                    </article>
+
+                    <article class="card">
+                        <h3>Paket LensArt</h3>
+                        <p>Durasi 15 menit sesi foto, maksimal 4 orang, 2 lembar print, dan softcopy file.</p>
+                    </article>
+
+                    <article class="card">
+                        <h3>Paket Kalcer</h3>
+                        <p>Durasi 20 menit sesi foto, maksimal 6 orang, 4 lembar print, dan softcopy file.</p>
+                    </article>
+
+                    <article class="card">
+                        <h3>Paket Custom</h3>
+                        <p>Paket foto fleksibel yang dapat disesuaikan dengan kebutuhan pelanggan.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="daftar-booking" class="booking-section">
+                <h2 class="section-title">Daftar Reservasi</h2>
+                <p class="section-desc">
+                    Berikut adalah data pelanggan yang telah melakukan reservasi di Studio LensArt.
+                </p>
+
+                <form class="search-form" action="#daftar-booking">
+                    <input type="text" placeholder="Cari data reservasi...">
+                    <button type="submit">Cari</button>
+                </form>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama Pelanggan</th>
+                                <th>Email</th>
+                                <th>No. HP</th>
+                                <th>Jumlah Orang</th>
+                                <th>Paket Foto</th>
+                                <th>Tanggal Reservasi</th>
+                                <th>Jam Reservasi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Alya Putri</td>
+                                <td>alya@gmail.com</td>
+                                <td>081234567890</td>
+                                <td>2</td>
+                                <td>Indie</td>
+                                <td>12 Mei 2026</td>
+                                <td>10:00</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Bima Saputra</td>
+                                <td>bima@gmail.com</td>
+                                <td>081234567891</td>
+                                <td>3</td>
+                                <td>LensArt</td>
+                                <td>13 Mei 2026</td>
+                                <td>13:00</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Citra Lestari</td>
+                                <td>citra@gmail.com</td>
+                                <td>081234567892</td>
+                                <td>4</td>
+                                <td>Kalcer</td>
+                                <td>14 Mei 2026</td>
+                                <td>15:00</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Doni Pratama</td>
+                                <td>doni@gmail.com</td>
+                                <td>081234567893</td>
+                                <td>2</td>
+                                <td>Indie</td>
+                                <td>15 Mei 2026</td>
+                                <td>09:00</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Eva Maharani</td>
+                                <td>eva@gmail.com</td>
+                                <td>081234567894</td>
+                                <td>4</td>
+                                <td>LensArt</td>
+                                <td>16 Mei 2026</td>
+                                <td>11:00</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="7"><strong>Total Reservasi</strong></td>
+                                <td><strong>5</strong></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </section>
         </section>
     </main>
 
-    <hr>
+    <footer class="footer" id="kontak">
+        <div class="footer-col">
+            <h3>Paket Foto</h3>
+            <p>Paket Indie</p>
+            <p>Paket LensArt</p>
+            <p>Paket Kalcer</p>
+            <p>Paket Custom</p>
+        </div>
 
-    <aside id="statistik">
-        <h2>Statistik LensArt</h2>
-        <ul>
-            <li>Total Booking Hari Ini: 5</li>
-            <li>Total Booking Minggu Ini: 12</li>
-            <li>Paket Terpopuler: LensArt</li>
-            <li>Jadwal Tersedia Hari Ini: 4</li>
-        </ul>
-    </aside>
+        <div class="footer-col">
+            <h3>Jam Operasional</h3>
+            <p>Senin - Jumat: 09.00 - 20.00</p>
+            <p>Sabtu - Minggu: 10.00 - 21.00</p>
+        </div>
 
-    <hr>
-
-    <section id="daftar-booking">
-        <h2>Daftar Reservasi</h2>
-        <p>Berikut adalah data pelanggan yang telah melakukan reservasi di Studio LensArt.</p>
-
-        <table border="1" cellpadding="8">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Nama Pelanggan</th>
-                    <th>Email</th>
-                    <th>No. HP</th>
-                    <th>Jumlah Orang</th>
-                    <th>Paket Foto</th>
-                    <th>Tanggal Reservasi</th>
-                    <th>Jam Reservasi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Alya Putri</td>
-                    <td>alya@gmail.com</td>
-                    <td>081234567890</td>
-                    <td>2</td>
-                    <td>Indie</td>
-                    <td>12 Mei 2026</td>
-                    <td>10:00</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Bima Saputra</td>
-                    <td>bima@gmail.com</td>
-                    <td>081234567891</td>
-                    <td>3</td>
-                    <td>LensArt</td>
-                    <td>13 Mei 2026</td>
-                    <td>13:00</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Citra Lestari</td>
-                    <td>citra@gmail.com</td>
-                    <td>081234567892</td>
-                    <td>4</td>
-                    <td>Kalcer</td>
-                    <td>14 Mei 2026</td>
-                    <td>15:00</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Doni Pratama</td>
-                    <td>doni@gmail.com</td>
-                    <td>081234567893</td>
-                    <td>2</td>
-                    <td>Indie</td>
-                    <td>15 Mei 2026</td>
-                    <td>09:00</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Eva Maharani</td>
-                    <td>eva@gmail.com</td>
-                    <td>081234567894</td>
-                    <td>4</td>
-                    <td>LensArt</td>
-                    <td>16 Mei 2026</td>
-                    <td>11:00</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="7"><strong>Total Reservasi</strong></td>
-                    <td><strong>5</strong></td>
-                </tr>
-            </tfoot>
-        </table>
-    </section>
-
-    <hr>
-
-    <footer id="kontak">
-        <h2>More Information</h2>
-        <p>&copy; 2026 Studio LensArt</p>
-        <p>Alamat: Jl. Mawar No. 10, Jember</p>
-        <p>Email: studiolensart@gmail.com</p>
-        <p>Telepon: 0812-3456-7890</p>
+        <div class="footer-col">
+            <h3>Kontak Studio</h3>
+            <p>Jl. Mawar No. 10, Jember</p>
+            <p>Email: studiolensart@gmail.com</p>
+            <p>Telepon: 0812-3456-7890</p>
+        </div>
     </footer>
 
 </body>
