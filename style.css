@@ -1,15 +1,9 @@
-/* =========================
-   RESET DASAR
-========================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* =========================
-   WARNA DASAR
-========================= */
 :root {
   --primary: #5a3434;
   --secondary: #d48363;
@@ -22,9 +16,6 @@
   --radius: 14px;
 }
 
-/* =========================
-   DASAR HALAMAN
-========================= */
 html {
   scroll-behavior: smooth;
 }
@@ -37,9 +28,6 @@ body {
   padding-top: 90px;
 }
 
-/* =========================
-   NAVBAR
-========================= */
 .navbar {
   position: fixed;
   top: 0;
@@ -85,9 +73,6 @@ body {
   transform: translateX(4px);
 }
 
-/* =========================
-   HERO
-========================= */
 .hero {
   background: linear-gradient(rgba(90, 52, 52, 0.75), rgba(212, 131, 99, 0.55)),
               url("https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=80");
@@ -123,9 +108,6 @@ body {
   font-size: 16px;
 }
 
-/* =========================
-   LAYOUT UTAMA
-========================= */
 .main-layout {
   display: flex;
   flex-direction: column;
@@ -146,9 +128,6 @@ body {
   gap: 24px;
 }
 
-/* =========================
-   SIDEBAR
-========================= */
 .filter-box,
 .stat-box {
   margin-bottom: 24px;
@@ -176,9 +155,6 @@ body {
   padding-left: 18px;
 }
 
-/* =========================
-   SECTION TITLE
-========================= */
 .section-title {
   font-size: 28px;
   color: var(--primary);
@@ -189,9 +165,6 @@ body {
   margin-bottom: 14px;
 }
 
-/* =========================
-   CARD GRID
-========================= */
 .card-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -217,9 +190,6 @@ body {
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
 }
 
-/* =========================
-   SEARCH FORM
-========================= */
 .search-form {
   display: flex;
   flex-direction: column;
@@ -265,9 +235,6 @@ body {
   scroll-margin-top: 100px;
 }
 
-/* =========================
-   TABEL
-========================= */
 .table-container {
   overflow-x: auto;
   background: var(--white);
@@ -307,9 +274,6 @@ tfoot {
   font-weight: bold;
 }
 
-/* =========================
-   FOOTER
-========================= */
 .footer {
   background: var(--primary);
   color: var(--white);
@@ -328,9 +292,6 @@ tfoot {
   margin-bottom: 8px;
 }
 
-/* =========================
-   TABLET
-========================= */
 @media (min-width: 768px) {
   body {
     padding-top: 80px;
@@ -373,9 +334,6 @@ tfoot {
   }
 }
 
-/* =========================
-   DESKTOP
-========================= */
 @media (min-width: 1024px) {
   .main-layout {
     flex-direction: row;
