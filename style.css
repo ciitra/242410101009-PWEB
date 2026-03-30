@@ -215,6 +215,7 @@ body {
   box-shadow: 0 0 0 3px rgba(212, 131, 99, 0.2);
 }
 
+
 .search-form button {
   border: none;
   background: var(--secondary);
