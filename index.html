@@ -13,7 +13,7 @@
         <ul class="nav-menu">
             <li><a href="#beranda">Beranda</a></li>
             <li><a href="#paket">Paket Foto</a></li>
-            <li><a href="#daftar-booking">Daftar Reservasi</a></li>
+            <li><a href="#daftar-booking">Data Reservasi</a></li>
             <li><a href="#statistik">Statistik</a></li>
             <li><a href="#kontak">Kontak</a></li>
         </ul>
@@ -79,7 +79,7 @@
             </section>
 
             <section id="daftar-booking" class="booking-section">
-                <h2 class="section-title">Daftar Reservasi</h2>
+                <h2 class="section-title">Data Reservasi</h2>
                 <p class="section-desc">
                     Berikut adalah data pelanggan yang telah melakukan reservasi di Studio LensArt.
                 </p>
@@ -163,6 +163,30 @@
                         </tfoot>
                     </table>
                 </div>
+
+                <section class="tambah-reservasi-section">
+                    <h3 class="sub-title">Daftar Reservasi</h3>
+
+                    <form class="tambah-reservasi-form">
+                        <input type="text" placeholder="Nama Pelanggan" required>
+                        <input type="email" placeholder="Email" required>
+                        <input type="text" placeholder="No. HP" required>
+                        <input type="number" placeholder="Jumlah Orang" required>
+
+                        <select required>
+                            <option value="">Pilih Paket Foto</option>
+                            <option>Paket Indie</option>
+                            <option>Paket LensArt</option>
+                            <option>Paket Kalcer</option>
+                            <option>Paket Custom</option>
+                        </select>
+
+                        <input type="date" required>
+                        <input type="time" required>
+
+                        <button type="submit">Simpan Reservasi</button>
+                    </form>
+                </section>
             </section>
         </section>
     </main>

@@ -274,6 +274,59 @@ tfoot {
   font-weight: bold;
 }
 
+.sub-title {
+  font-size: 22px;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.tambah-reservasi-section {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px solid var(--border);
+}
+
+.tambah-reservasi-form {
+  display: grid;
+  gap: 12px;
+  background: var(--white);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.tambah-reservasi-form input,
+.tambah-reservasi-form select {
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tambah-reservasi-form input:focus,
+.tambah-reservasi-form select:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 3px rgba(212, 131, 99, 0.2);
+}
+
+.tambah-reservasi-form button {
+  border: none;
+  background: var(--secondary);
+  color: var(--white);
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.tambah-reservasi-form button:hover {
+  background: var(--primary);
+  transform: translateY(-2px);
+}
+
 .footer {
   background: var(--primary);
   color: var(--white);
@@ -323,6 +376,14 @@ tfoot {
 
   .search-form input {
     flex: 1;
+  }
+
+  .tambah-reservasi-form {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tambah-reservasi-form button {
+    grid-column: 1 / -1;
   }
 
   .card-grid {
