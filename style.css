@@ -36,27 +36,58 @@ body {
   background: var(--primary);
   color: var(--white);
   z-index: 1000;
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
-
   padding: 15px 20px;
   box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .logo {
   font-size: 22px;
   font-weight: bold;
+  color: var(--white);
+}
+
+.menu-toggle {
+  display: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  width: 42px;
+  height: 42px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: var(--white);
+  border-radius: 999px;
+  transition: 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 .nav-menu {
   list-style: none;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
+  align-items: center;
+  gap: 18px;
 }
 
 .nav-menu a {
@@ -70,12 +101,12 @@ body {
 
 .nav-menu a:hover {
   background-color: rgba(255, 255, 255, 0.15);
-  transform: translateX(4px);
+  transform: translateY(-2px);
 }
 
 .hero {
   background: linear-gradient(rgba(90, 52, 52, 0.75), rgba(212, 131, 99, 0.55)),
-              url("https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=80");
+    url("https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=80");
   background-size: cover;
   background-position: center;
   color: var(--white);
@@ -93,7 +124,7 @@ body {
 
 .hero-logo {
   width: 160px;
-  background: white;
+  background: var(--white);
   padding: 8px 12px;
   border-radius: 10px;
   display: inline-block;
@@ -165,6 +196,12 @@ body {
   margin-bottom: 14px;
 }
 
+.sub-title {
+  font-size: 22px;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
 .card-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -178,16 +215,30 @@ body {
   border-top: 4px solid var(--secondary);
   box-shadow: var(--shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
 }
 
 .card h3 {
   color: var(--primary);
   margin-bottom: 10px;
+  font-size: 24px;
+  line-height: 1.3;
+}
+
+.card p {
+  word-break: break-word;
 }
 
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
+}
+
+.card-price {
+  margin-top: 12px;
+  font-weight: bold;
+  color: var(--secondary);
+  font-size: 16px;
 }
 
 .search-form {
@@ -215,7 +266,6 @@ body {
   box-shadow: 0 0 0 3px rgba(212, 131, 99, 0.2);
 }
 
-
 .search-form button {
   border: none;
   background: var(--secondary);
@@ -238,15 +288,16 @@ body {
 
 .table-container {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   background: var(--white);
-  padding: 20px;
+  padding: 14px;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
 
 table {
   width: 100%;
-  min-width: 800px;
+  min-width: 980px;
   border-collapse: collapse;
 }
 
@@ -258,8 +309,21 @@ thead {
 th,
 td {
   border: 1px solid var(--border);
-  padding: 12px 14px;
+  padding: 9px 10px;
   text-align: left;
+  vertical-align: top;
+  line-height: 1.45;
+}
+
+th {
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+td {
+  word-break: break-word;
+  font-size: 12px;
 }
 
 tbody tr:nth-child(even) {
@@ -275,11 +339,70 @@ tfoot {
   font-weight: bold;
 }
 
-.sub-title {
-  font-size: 22px;
-  color: var(--primary);
-  margin-bottom: 10px;
+th:nth-child(1),
+td:nth-child(1) {
+  width: 48px;
+  min-width: 48px;
+  text-align: center;
 }
+
+th:nth-child(2),
+td:nth-child(2) {
+  min-width: 90px;
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+  min-width: 120px;
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+  min-width: 110px;
+}
+
+th:nth-child(5),
+td:nth-child(5) {
+  min-width: 120px;
+}
+
+th:nth-child(6),
+td:nth-child(6) {
+  min-width: 95px;
+}
+
+th:nth-child(7),
+td:nth-child(7) {
+  min-width: 85px;
+  text-align: center;
+}
+
+th:nth-child(8),
+td:nth-child(8) {
+  min-width: 100px;
+}
+
+th:nth-child(9),
+td:nth-child(9) {
+  min-width: 90px;
+}
+
+th:nth-child(10),
+td:nth-child(10) {
+  min-width: 105px;
+}
+
+th:nth-child(11),
+td:nth-child(11) {
+  min-width: 75px;
+  text-align: center;
+}
+
+th:nth-child(12),
+td:nth-child(12) {
+  min-width: 88px;
+}
+
 
 .tambah-reservasi-section {
   margin-top: 30px;
@@ -328,6 +451,127 @@ tfoot {
   transform: translateY(-2px);
 }
 
+input[readonly] {
+  background-color: #f3ece8;
+  cursor: not-allowed;
+}
+
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.error-text {
+  color: #c0392b;
+  font-size: 13px;
+  margin-top: 6px;
+  min-height: 18px;
+}
+
+.input-error {
+  border-color: #c0392b !important;
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.15) !important;
+}
+
+.form-message {
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  display: none;
+}
+
+.form-message.success {
+  display: block;
+  background: #e9f8ef;
+  color: #1f7a3f;
+  border: 1px solid #bfe3cb;
+}
+
+.form-message.error {
+  display: block;
+  background: #fdeeee;
+  color: #b33939;
+  border: 1px solid #efc1c1;
+}
+
+.form-actions {
+  display: grid;
+  gap: 12px;
+  grid-column: 1 / -1;
+}
+
+.btn-secondary {
+  border: none;
+  background: #8c7b75;
+  color: var(--white);
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: #6f615d;
+  transform: translateY(-2px);
+}
+
+.hidden {
+  display: none;
+}
+
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 68px;
+}
+
+.btn-edit,
+.btn-delete {
+  border: none;
+  color: var(--white);
+  font-size: 11px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.btn-edit {
+  background: #2d8f6f;
+}
+
+.btn-delete {
+  background: #c0392b;
+}
+
+.btn-edit:hover,
+.btn-delete:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
+}
+
+.empty-state {
+  text-align: center;
+  color: #7a6761;
+  font-style: italic;
+}
+
+.status-warning {
+  color: #c0392b;
+  font-weight: bold;
+}
+
+.status-safe {
+  color: #1f7a3f;
+  font-weight: bold;
+}
+
+
 .footer {
   background: var(--primary);
   color: var(--white);
@@ -346,20 +590,34 @@ tfoot {
   margin-bottom: 8px;
 }
 
+
 @media (min-width: 768px) {
   body {
     padding-top: 80px;
   }
 
   .navbar {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    padding: 15px 20px;
+  }
+
+  .menu-toggle {
+    display: none;
   }
 
   .nav-menu {
+    position: static;
+    display: flex;
     flex-direction: row;
     width: auto;
+    margin-top: 0;
+    padding: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    gap: 18px;
   }
 
   .hero {
@@ -383,10 +641,6 @@ tfoot {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .tambah-reservasi-form button {
-    grid-column: 1 / -1;
-  }
-
   .card-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -394,7 +648,39 @@ tfoot {
   .footer {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .form-actions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .table-container {
+    padding: 12px;
+  }
+
+  table {
+    min-width: 930px;
+  }
+
+  th,
+  td {
+    padding: 8px 9px;
+  }
+
+  th {
+    font-size: 11px;
+  }
+
+  td {
+    font-size: 11px;
+  }
+
+  .btn-edit,
+  .btn-delete {
+    font-size: 10px;
+    padding: 5px 7px;
+  }
 }
+
 
 @media (min-width: 1024px) {
   .main-layout {
@@ -411,10 +697,11 @@ tfoot {
 
   .content {
     flex: 1;
+    min-width: 0;
   }
 
   .card-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .footer {
@@ -427,5 +714,233 @@ tfoot {
 
   .hero h1 {
     font-size: 44px;
+  }
+
+  .table-container {
+    padding: 10px;
+  }
+
+  table {
+    min-width: 900px;
+  }
+
+  th,
+  td {
+    padding: 8px 8px;
+  }
+
+  th {
+    font-size: 10px;
+  }
+
+  td {
+    font-size: 10px;
+  }
+
+  .btn-edit,
+  .btn-delete {
+    font-size: 10px;
+    padding: 5px 6px;
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    padding-top: 78px;
+  }
+
+  .navbar {
+    padding: 14px 16px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    right: 16px;
+    width: 220px;
+    background: var(--primary);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 10px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+  }
+
+  .nav-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-menu a {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .hero {
+    margin: 0 12px 16px;
+    padding: 50px 16px;
+  }
+
+  .hero-logo {
+    width: 110px;
+    padding: 6px 10px;
+  }
+
+  .hero h1 {
+    font-size: 24px;
+    line-height: 1.3;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .main-layout {
+    padding: 0 12px 16px;
+    gap: 16px;
+  }
+
+  .sidebar,
+  .card,
+  .search-form,
+  .table-container,
+  .tambah-reservasi-form {
+    padding: 14px;
+  }
+
+  .section-title {
+    font-size: 22px;
+  }
+
+  .sub-title,
+  .filter-box h2,
+  .stat-box h2 {
+    font-size: 18px;
+  }
+
+  .section-desc {
+    font-size: 14px;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .card h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .card p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .card-price {
+    font-size: 15px;
+    margin-top: 10px;
+  }
+
+  .search-form {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .search-form input,
+  .search-form button {
+    width: 100%;
+  }
+
+  .search-form button {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+
+  .table-container {
+    padding: 12px;
+  }
+
+  table {
+    min-width: 980px;
+  }
+
+  th,
+  td {
+    padding: 8px 7px;
+  }
+
+  th {
+    font-size: 11px;
+  }
+
+  td {
+    font-size: 11px;
+  }
+
+  td:nth-child(2),
+  td:nth-child(6),
+  td:nth-child(7),
+  td:nth-child(11) {
+    white-space: nowrap;
+  }
+
+  td:nth-child(4),
+  td:nth-child(5),
+  td:nth-child(10) {
+    min-width: 110px;
+  }
+
+  th:last-child,
+  td:last-child {
+    position: sticky;
+    right: 0;
+    z-index: 2;
+  }
+
+  thead th:last-child {
+    background: var(--primary);
+  }
+
+  tbody td:last-child,
+  tfoot td:last-child {
+    background: #f6f1ee;
+  }
+
+  .action-buttons {
+    min-width: 64px;
+  }
+
+  .btn-edit,
+  .btn-delete {
+    width: 100%;
+    font-size: 10px;
+    padding: 5px 6px;
+  }
+
+  .tambah-reservasi-form input,
+  .tambah-reservasi-form select {
+    font-size: 14px;
+    padding: 11px 12px;
+  }
+
+  .tambah-reservasi-form button,
+  .btn-secondary {
+    font-size: 14px;
+    padding: 11px 14px;
   }
 }

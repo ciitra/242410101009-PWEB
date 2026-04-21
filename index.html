@@ -10,7 +10,14 @@
 
     <nav class="navbar">
         <div class="logo">Studio LensArt</div>
-        <ul class="nav-menu">
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Buka Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-menu" id="navMenu">
             <li><a href="#beranda">Beranda</a></li>
             <li><a href="#paket">Paket Foto</a></li>
             <li><a href="#daftar-booking">Data Reservasi</a></li>
@@ -34,19 +41,20 @@
         <aside class="sidebar">
             <section class="filter-box">
                 <h2>Filter Reservasi</h2>
-                <label><input type="checkbox"> Paket Indie</label>
-                <label><input type="checkbox"> Paket LensArt</label>
-                <label><input type="checkbox"> Paket Kalcer</label>
-                <label><input type="checkbox"> Paket Custom</label>
+                <label><input type="checkbox" class="filter-paket" value="Paket Indie"> Paket Indie</label>
+                <label><input type="checkbox" class="filter-paket" value="Paket LensArt"> Paket LensArt</label>
+                <label><input type="checkbox" class="filter-paket" value="Paket Kalcer"> Paket Kalcer</label>
+                <label><input type="checkbox" class="filter-paket" value="Paket Custom"> Paket Custom</label>
             </section>
 
             <section class="stat-box" id="statistik">
                 <h2>Statistik LensArt</h2>
                 <ul>
-                    <li>Total Booking Hari Ini: 5</li>
-                    <li>Total Booking Minggu Ini: 12</li>
-                    <li>Paket Terpopuler: LensArt</li>
-                    <li>Jadwal Tersedia Hari Ini: 4</li>
+                    <li>Total Reservasi: <span id="totalReservasi">0</span></li>
+                    <li>Total Pendapatan: <span id="totalPendapatan">Rp0</span></li>
+                    <li>Paket Terpopuler: <span id="paketTerpopuler">-</span></li>
+                    <li>Jadwal Tersedia Hari Ini: <span id="jadwalTersedia">0</span></li>
+                    <li>Status Slot Hari Ini: <span id="statusSlot">-</span></li>
                 </ul>
             </section>
         </aside>
@@ -58,22 +66,26 @@
                 <div class="card-grid">
                     <article class="card">
                         <h3>Paket Indie</h3>
-                        <p>Durasi 10 menit sesi foto, maksimal 2 orang, 1 lembar print, dan softcopy file.</p>
+                        <p>Durasi 10 menit sesi foto, 1 lembar print, dan softcopy file.</p>
+                        <p class="card-price">Harga: Rp50.000</p>
                     </article>
 
                     <article class="card">
                         <h3>Paket LensArt</h3>
-                        <p>Durasi 15 menit sesi foto, maksimal 4 orang, 2 lembar print, dan softcopy file.</p>
+                        <p>Durasi 15 menit sesi foto, 2 lembar print, dan softcopy file.</p>
+                        <p class="card-price">Harga: Rp80.000</p>
                     </article>
 
                     <article class="card">
                         <h3>Paket Kalcer</h3>
-                        <p>Durasi 20 menit sesi foto, maksimal 6 orang, 4 lembar print, dan softcopy file.</p>
+                        <p>Durasi 20 menit sesi foto, 4 lembar print, dan softcopy file.</p>
+                        <p class="card-price">Harga: Rp120.000</p>
                     </article>
 
                     <article class="card">
                         <h3>Paket Custom</h3>
                         <p>Paket foto fleksibel yang dapat disesuaikan dengan kebutuhan pelanggan.</p>
+                        <p class="card-price">Harga: Rp150.000</p>
                     </article>
                 </div>
             </section>
@@ -84,9 +96,9 @@
                     Berikut adalah data pelanggan yang telah melakukan reservasi di Studio LensArt.
                 </p>
 
-                <form class="search-form" action="#daftar-booking">
-                    <input type="text" placeholder="Cari data reservasi...">
-                    <button type="submit">Cari</button>
+                <form class="search-form" id="searchForm">
+                    <input type="text" id="searchInput" placeholder="Cari berdasarkan nama pelanggan atau kode booking...">
+                    <button type="button">Cari</button>
                 </form>
 
                 <div class="table-container">
@@ -94,97 +106,113 @@
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th>Kode Booking</th>
                                 <th>Nama Pelanggan</th>
                                 <th>Email</th>
+                                <th>Username Instagram</th>
                                 <th>No. HP</th>
                                 <th>Jumlah Orang</th>
                                 <th>Paket Foto</th>
+                                <th>Harga</th>
                                 <th>Tanggal Reservasi</th>
                                 <th>Jam Reservasi</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Alya Putri</td>
-                                <td>alya@gmail.com</td>
-                                <td>081234567890</td>
-                                <td>2</td>
-                                <td>Indie</td>
-                                <td>12 Mei 2026</td>
-                                <td>10:00</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Bima Saputra</td>
-                                <td>bima@gmail.com</td>
-                                <td>081234567891</td>
-                                <td>3</td>
-                                <td>LensArt</td>
-                                <td>13 Mei 2026</td>
-                                <td>13:00</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Citra Lestari</td>
-                                <td>citra@gmail.com</td>
-                                <td>081234567892</td>
-                                <td>4</td>
-                                <td>Kalcer</td>
-                                <td>14 Mei 2026</td>
-                                <td>15:00</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Doni Pratama</td>
-                                <td>doni@gmail.com</td>
-                                <td>081234567893</td>
-                                <td>2</td>
-                                <td>Indie</td>
-                                <td>15 Mei 2026</td>
-                                <td>09:00</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Eva Maharani</td>
-                                <td>eva@gmail.com</td>
-                                <td>081234567894</td>
-                                <td>4</td>
-                                <td>LensArt</td>
-                                <td>16 Mei 2026</td>
-                                <td>11:00</td>
-                            </tr>
-                        </tbody>
+                        <tbody id="reservationBody"></tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="7"><strong>Total Reservasi</strong></td>
-                                <td><strong>5</strong></td>
+                                <td colspan="11"><strong>Total Reservasi</strong></td>
+                                <td><strong id="tableTotalReservasi">0</strong></td>
                             </tr>
                         </tfoot>
                     </table>
                 </div>
 
                 <section class="tambah-reservasi-section">
-                    <h3 class="sub-title">Daftar Reservasi</h3>
+                    <h3 class="sub-title" id="formTitle">Daftar Reservasi</h3>
 
-                    <form class="tambah-reservasi-form">
-                        <input type="text" placeholder="Nama Pelanggan" required>
-                        <input type="email" placeholder="Email" required>
-                        <input type="text" placeholder="No. HP" required>
-                        <input type="number" placeholder="Jumlah Orang" required>
+                    <div id="formMessage" class="form-message"></div>
 
-                        <select required>
-                            <option value="">Pilih Paket Foto</option>
-                            <option>Paket Indie</option>
-                            <option>Paket LensArt</option>
-                            <option>Paket Kalcer</option>
-                            <option>Paket Custom</option>
-                        </select>
+                    <form class="tambah-reservasi-form" id="reservationForm">
+                        <input type="hidden" id="editIndex" value="-1">
 
-                        <input type="date" required>
-                        <input type="time" required>
+                        <div class="form-group">
+                            <input type="text" id="kodeBooking" placeholder="Kode Booking" required>
+                            <small class="error-text" id="errorKodeBooking"></small>
+                        </div>
 
-                        <button type="submit">Simpan Reservasi</button>
+                        <div class="form-group">
+                            <input type="text" id="namaPelanggan" placeholder="Nama Pelanggan" required>
+                            <small class="error-text" id="errorNamaPelanggan"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Email" required>
+                            <small class="error-text" id="errorEmail"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" id="usernameInstagram" placeholder="Username Instagram" required>
+                            <small class="error-text" id="errorUsernameInstagram"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" id="noHp" placeholder="No. HP" required>
+                            <small class="error-text" id="errorNoHp"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="number" id="jumlahOrang" placeholder="Jumlah Orang" required>
+                            <small class="error-text" id="errorJumlahOrang"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <select id="paketFoto" required>
+                                <option value="">Pilih Paket Foto</option>
+                                <option value="Paket Indie">Paket Indie</option>
+                                <option value="Paket LensArt">Paket LensArt</option>
+                                <option value="Paket Kalcer">Paket Kalcer</option>
+                                <option value="Paket Custom">Paket Custom</option>
+                            </select>
+                            <small class="error-text" id="errorPaketFoto"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" id="hargaDisplay" placeholder="Harga Paket Otomatis" readonly>
+                            <small class="error-text" id="errorHargaDisplay"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="date" id="tanggalReservasi" required>
+                            <small class="error-text" id="errorTanggalReservasi"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <select id="jamReservasi" required>
+                                <option value="">Pilih Jam Reservasi</option>
+                                <option value="08:00">08:00</option>
+                                <option value="09:00">09:00</option>
+                                <option value="10:00">10:00</option>
+                                <option value="11:00">11:00</option>
+                                <option value="12:00">12:00</option>
+                                <option value="13:00">13:00</option>
+                                <option value="14:00">14:00</option>
+                                <option value="15:00">15:00</option>
+                                <option value="16:00">16:00</option>
+                                <option value="17:00">17:00</option>
+                                <option value="18:00">18:00</option>
+                                <option value="19:00">19:00</option>
+                                <option value="20:00">20:00</option>
+                                <option value="21:00">21:00</option>
+                            </select>
+                            <small class="error-text" id="errorJamReservasi"></small>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" id="submitBtn">Simpan Reservasi</button>
+                            <button type="button" id="cancelEditBtn" class="btn-secondary hidden">Batal Edit</button>
+                        </div>
                     </form>
                 </section>
             </section>
@@ -214,5 +242,6 @@
         </div>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
