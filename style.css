@@ -944,3 +944,46 @@ input[readonly] {
     padding: 11px 14px;
   }
 }
+
+.hero {
+  overflow: hidden;
+}
+
+.hero-animate {
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.logo-animate {
+  animation: fadeDown 0.9s ease-out 0.2s forwards;
+}
+
+.title-animate {
+  animation: fadeUp 1s ease-out 0.5s forwards;
+}
+
+.text-animate {
+  animation: fadeUp 1s ease-out 0.8s forwards;
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
