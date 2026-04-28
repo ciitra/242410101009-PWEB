@@ -1,0 +1,200 @@
+@extends('layouts.app')
+
+@section('title', 'Studio LensArt - Sistem Booking Studio Foto')
+
+@section('content')
+
+<header class="hero" id="beranda">
+    <div class="hero-overlay">
+        <img src="{{ asset('images/logo-lensart.png') }}" alt="Logo Studio LensArt" class="hero-logo hero-animate logo-animate">
+        <h1 class="hero-animate title-animate">Selamat datang di Studio LensArt</h1>
+        <p class="hero-animate text-animate">
+            Website ini menyediakan informasi paket foto serta data reservasi pelanggan
+            di Studio LensArt.
+        </p>
+    </div>
+</header>
+
+<main class="main-layout">
+    <aside class="sidebar">
+        <section class="filter-box">
+            <h2>Filter Reservasi</h2>
+            <label><input type="checkbox" class="filter-paket" value="Paket Indie"> Paket Indie</label>
+            <label><input type="checkbox" class="filter-paket" value="Paket LensArt"> Paket LensArt</label>
+            <label><input type="checkbox" class="filter-paket" value="Paket Kalcer"> Paket Kalcer</label>
+            <label><input type="checkbox" class="filter-paket" value="Paket Custom"> Paket Custom</label>
+        </section>
+
+        <section class="stat-box" id="statistik">
+            <h2>Statistik LensArt</h2>
+            <ul>
+                <li>Total Reservasi: <span id="totalReservasi">0</span></li>
+                <li>Total Pendapatan: <span id="totalPendapatan">Rp0</span></li>
+                <li>Paket Terpopuler: <span id="paketTerpopuler">-</span></li>
+                <li>Jadwal Tersedia Hari Ini: <span id="jadwalTersedia">0</span></li>
+                <li>Status Slot Hari Ini: <span id="statusSlot">-</span></li>
+            </ul>
+        </section>
+    </aside>
+
+    <section class="content">
+        <section id="paket" class="paket-section">
+            <h2 class="section-title">Paket Foto</h2>
+
+            <div class="card-grid">
+                <article class="card">
+                    <h3>Paket Indie</h3>
+                    <p>Durasi 10 menit sesi foto, 1 lembar print, dan softcopy file.</p>
+                    <p class="card-price">Harga: Rp50.000</p>
+                </article>
+
+                <article class="card">
+                    <h3>Paket LensArt</h3>
+                    <p>Durasi 15 menit sesi foto, 2 lembar print, dan softcopy file.</p>
+                    <p class="card-price">Harga: Rp80.000</p>
+                </article>
+
+                <article class="card">
+                    <h3>Paket Kalcer</h3>
+                    <p>Durasi 20 menit sesi foto, 4 lembar print, dan softcopy file.</p>
+                    <p class="card-price">Harga: Rp120.000</p>
+                </article>
+
+                <article class="card">
+                    <h3>Paket Custom</h3>
+                    <p>Paket foto fleksibel yang dapat disesuaikan dengan kebutuhan pelanggan.</p>
+                    <p class="card-price">Harga: Rp150.000</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="daftar-booking" class="booking-section">
+            <h2 class="section-title">Data Reservasi</h2>
+            <p class="section-desc">
+                Berikut adalah data pelanggan yang telah melakukan reservasi di Studio LensArt.
+            </p>
+
+            <form class="search-form" id="searchForm">
+                <input type="text" id="searchInput" placeholder="Cari berdasarkan nama pelanggan atau kode booking...">
+                <button type="button">Cari</button>
+            </form>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Kode Booking</th>
+                            <th>Nama Pelanggan</th>
+                            <th>Email</th>
+                            <th>Username Instagram</th>
+                            <th>No. HP</th>
+                            <th>Jumlah Orang</th>
+                            <th>Paket Foto</th>
+                            <th>Harga</th>
+                            <th>Tanggal Reservasi</th>
+                            <th>Jam Reservasi</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reservationBody"></tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="11"><strong>Total Reservasi</strong></td>
+                            <td><strong id="tableTotalReservasi">0</strong></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <section class="tambah-reservasi-section">
+                <h3 class="sub-title" id="formTitle">Daftar Reservasi</h3>
+
+                <div id="formMessage" class="form-message"></div>
+
+                <form class="tambah-reservasi-form" id="reservationForm">
+                    <input type="hidden" id="editIndex" value="-1">
+
+                    <div class="form-group">
+                        <input type="text" id="kodeBooking" placeholder="Kode Booking" required>
+                        <small class="error-text" id="errorKodeBooking"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" id="namaPelanggan" placeholder="Nama Pelanggan" required>
+                        <small class="error-text" id="errorNamaPelanggan"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Email" required>
+                        <small class="error-text" id="errorEmail"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" id="usernameInstagram" placeholder="Username Instagram" required>
+                        <small class="error-text" id="errorUsernameInstagram"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" id="noHp" placeholder="No. HP" required>
+                        <small class="error-text" id="errorNoHp"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="number" id="jumlahOrang" placeholder="Jumlah Orang" required>
+                        <small class="error-text" id="errorJumlahOrang"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <select id="paketFoto" required>
+                            <option value="">Pilih Paket Foto</option>
+                            <option value="Paket Indie">Paket Indie</option>
+                            <option value="Paket LensArt">Paket LensArt</option>
+                            <option value="Paket Kalcer">Paket Kalcer</option>
+                            <option value="Paket Custom">Paket Custom</option>
+                        </select>
+                        <small class="error-text" id="errorPaketFoto"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" id="hargaDisplay" placeholder="Harga Paket Otomatis" readonly>
+                        <small class="error-text" id="errorHargaDisplay"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="date" id="tanggalReservasi" required>
+                        <small class="error-text" id="errorTanggalReservasi"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <select id="jamReservasi" required>
+                            <option value="">Pilih Jam Reservasi</option>
+                            <option value="08:00">08:00</option>
+                            <option value="09:00">09:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:00">11:00</option>
+                            <option value="12:00">12:00</option>
+                            <option value="13:00">13:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="17:00">17:00</option>
+                            <option value="18:00">18:00</option>
+                            <option value="19:00">19:00</option>
+                            <option value="20:00">20:00</option>
+                            <option value="21:00">21:00</option>
+                        </select>
+                        <small class="error-text" id="errorJamReservasi"></small>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" id="submitBtn">Simpan Reservasi</button>
+                        <button type="button" id="cancelEditBtn" class="btn-secondary hidden">Batal Edit</button>
+                    </div>
+                </form>
+            </section>
+        </section>
+    </section>
+</main>
+
+@endsection
