@@ -19,52 +19,61 @@
     <aside class="sidebar">
         <section class="filter-box">
             <h2>Filter Reservasi</h2>
-            <label><input type="checkbox" class="filter-paket" value="Paket Indie"> Paket Indie</label>
-            <label><input type="checkbox" class="filter-paket" value="Paket LensArt"> Paket LensArt</label>
-            <label><input type="checkbox" class="filter-paket" value="Paket Kalcer"> Paket Kalcer</label>
-            <label><input type="checkbox" class="filter-paket" value="Paket Custom"> Paket Custom</label>
+
+            @forelse ($filterPakets as $filter)
+                <label>
+                    <input type="checkbox" class="filter-paket" value="{{ $filter }}"> {{ $filter }}
+                </label>
+            @empty
+                <p class="empty-state">Filter paket belum tersedia.</p>
+            @endforelse
         </section>
 
         <section class="stat-box" id="statistik">
             <h2>Statistik LensArt</h2>
+
             <ul>
-                <li>Total Reservasi: <span id="totalReservasi">0</span></li>
-                <li>Total Pendapatan: <span id="totalPendapatan">Rp0</span></li>
-                <li>Paket Terpopuler: <span id="paketTerpopuler">-</span></li>
-                <li>Jadwal Tersedia Hari Ini: <span id="jadwalTersedia">0</span></li>
-                <li>Status Slot Hari Ini: <span id="statusSlot">-</span></li>
+                @forelse ($sidebarStatistik as $statistik)
+                    <li>
+                        {{ $statistik['label'] }}:
+                        <span id="{{ $statistik['id'] }}" class="{{ $statistik['class'] }}">
+                            {{ $statistik['nilai'] }}
+                        </span>
+                    </li>
+                @empty
+                    <li class="empty-state">Statistik belum tersedia.</li>
+                @endforelse
             </ul>
         </section>
     </aside>
 
     <section class="content">
+        <div class="dashboard-stat-grid">
+            @forelse ($statCards as $stat)
+                <x-stat-card
+                    :judul="$stat['judul']"
+                    :nilai="$stat['nilai']"
+                    :ikon="$stat['ikon']"
+                    :warna="$stat['warna']"
+                />
+            @empty
+                <p class="empty-state">Data statistik belum tersedia.</p>
+            @endforelse
+        </div>
+
         <section id="paket" class="paket-section">
             <h2 class="section-title">Paket Foto</h2>
 
             <div class="card-grid">
-                <article class="card">
-                    <h3>Paket Indie</h3>
-                    <p>Durasi 10 menit sesi foto, 1 lembar print, dan softcopy file.</p>
-                    <p class="card-price">Harga: Rp50.000</p>
-                </article>
-
-                <article class="card">
-                    <h3>Paket LensArt</h3>
-                    <p>Durasi 15 menit sesi foto, 2 lembar print, dan softcopy file.</p>
-                    <p class="card-price">Harga: Rp80.000</p>
-                </article>
-
-                <article class="card">
-                    <h3>Paket Kalcer</h3>
-                    <p>Durasi 20 menit sesi foto, 4 lembar print, dan softcopy file.</p>
-                    <p class="card-price">Harga: Rp120.000</p>
-                </article>
-
-                <article class="card">
-                    <h3>Paket Custom</h3>
-                    <p>Paket foto fleksibel yang dapat disesuaikan dengan kebutuhan pelanggan.</p>
-                    <p class="card-price">Harga: Rp150.000</p>
-                </article>
+                @forelse ($paketFotos as $paket)
+                    <article class="card">
+                        <h3>{{ $paket['nama'] }}</h3>
+                        <p>{{ $paket['deskripsi'] }}</p>
+                        <p class="card-price">Harga: {{ $paket['harga'] }}</p>
+                    </article>
+                @empty
+                    <p class="empty-state">Data paket foto belum tersedia.</p>
+                @endforelse
             </div>
         </section>
 
@@ -97,11 +106,39 @@
                             <th>Aksi</th>
                         </tr>
                     </thead>
-                    <tbody id="reservationBody"></tbody>
+
+                    <tbody id="reservationBody">
+                        @forelse ($reservasiDummies as $reservasi)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $reservasi['kode'] }}</td>
+                                <td>{{ $reservasi['nama'] }}</td>
+                                <td>{{ $reservasi['email'] }}</td>
+                                <td>{{ $reservasi['instagram'] }}</td>
+                                <td>{{ $reservasi['no_hp'] }}</td>
+                                <td>{{ $reservasi['jumlah_orang'] }}</td>
+                                <td>{{ $reservasi['paket'] }}</td>
+                                <td>{{ $reservasi['harga'] }}</td>
+                                <td>{{ $reservasi['tanggal'] }}</td>
+                                <td>{{ $reservasi['jam'] }}</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button type="button" class="btn-edit" data-action="edit" data-index="{{ $loop->index }}">Edit</button>
+                                        <button type="button" class="btn-delete" data-action="delete" data-index="{{ $loop->index }}">Hapus</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="12" class="empty-state">Data reservasi belum tersedia.</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+
                     <tfoot>
                         <tr>
                             <td colspan="11"><strong>Total Reservasi</strong></td>
-                            <td><strong id="tableTotalReservasi">0</strong></td>
+                            <td><strong id="tableTotalReservasi">{{ count($reservasiDummies) }}</strong></td>
                         </tr>
                     </tfoot>
                 </table>
@@ -148,10 +185,12 @@
                     <div class="form-group">
                         <select id="paketFoto" required>
                             <option value="">Pilih Paket Foto</option>
-                            <option value="Paket Indie">Paket Indie</option>
-                            <option value="Paket LensArt">Paket LensArt</option>
-                            <option value="Paket Kalcer">Paket Kalcer</option>
-                            <option value="Paket Custom">Paket Custom</option>
+
+                            @forelse ($filterPakets as $paket)
+                                <option value="{{ $paket }}">{{ $paket }}</option>
+                            @empty
+                                <option value="">Paket belum tersedia</option>
+                            @endforelse
                         </select>
                         <small class="error-text" id="errorPaketFoto"></small>
                     </div>
@@ -169,20 +208,12 @@
                     <div class="form-group">
                         <select id="jamReservasi" required>
                             <option value="">Pilih Jam Reservasi</option>
-                            <option value="08:00">08:00</option>
-                            <option value="09:00">09:00</option>
-                            <option value="10:00">10:00</option>
-                            <option value="11:00">11:00</option>
-                            <option value="12:00">12:00</option>
-                            <option value="13:00">13:00</option>
-                            <option value="14:00">14:00</option>
-                            <option value="15:00">15:00</option>
-                            <option value="16:00">16:00</option>
-                            <option value="17:00">17:00</option>
-                            <option value="18:00">18:00</option>
-                            <option value="19:00">19:00</option>
-                            <option value="20:00">20:00</option>
-                            <option value="21:00">21:00</option>
+
+                            @forelse ($jamReservasis as $jam)
+                                <option value="{{ $jam }}">{{ $jam }}</option>
+                            @empty
+                                <option value="">Jam reservasi belum tersedia</option>
+                            @endforelse
                         </select>
                         <small class="error-text" id="errorJamReservasi"></small>
                     </div>

@@ -13,6 +13,6 @@
         <li><a href="{{ route('dashboard') }}#daftar-booking">Data Reservasi</a></li>
         <li><a href="{{ route('dashboard') }}#statistik">Statistik</a></li>
         <li><a href="{{ route('tentang') }}">Tentang</a></li>
-        <li><a href="{{ route('dashboard') }}#kontak">Kontak</a></li>
+        <li><a href="{{ route('kontak') }}">Kontak</a></li>
     </ul>
 </nav>

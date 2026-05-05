@@ -1144,3 +1144,351 @@ input[readonly] {
     text-align: center;
   }
 }
+
+/* =========================
+   FLASH SESSION MESSAGE
+========================= */
+
+.flash-message {
+  position: fixed;
+  top: 95px;
+  right: 24px;
+  z-index: 2000;
+  max-width: 360px;
+  padding: 14px 18px;
+  background: #fff7f2;
+  color: var(--primary);
+  border-left: 5px solid var(--secondary);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+  font-weight: bold;
+
+  animation: flashSlideIn 0.5s ease forwards, flashFadeOut 0.5s ease 4s forwards;
+}
+
+@keyframes flashSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes flashFadeOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(25px);
+    visibility: hidden;
+  }
+}
+
+@media (max-width: 767px) {
+  .flash-message {
+    top: 85px;
+    left: 12px;
+    right: 12px;
+    max-width: none;
+    font-size: 14px;
+    padding: 12px 14px;
+  }
+}
+/* =========================
+   COMPONENT STAT CARD
+========================= */
+
+.dashboard-stat-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card-component {
+  background: var(--white);
+  padding: 18px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-left: 5px solid var(--secondary);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card-component:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
+}
+
+.stat-card-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: #f3ece8;
+  display: grid;
+  place-items: center;
+  font-size: 23px;
+  flex-shrink: 0;
+}
+
+.stat-card-info h3 {
+  font-size: 15px;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.stat-card-info p {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--text);
+}
+
+.stat-brown {
+  border-left-color: var(--primary);
+}
+
+.stat-orange {
+  border-left-color: var(--secondary);
+}
+
+.stat-green {
+  border-left-color: #2d8f6f;
+}
+
+.stat-red {
+  border-left-color: #c0392b;
+}
+
+@media (min-width: 768px) {
+  .dashboard-stat-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .stat-card-component {
+    padding: 14px;
+  }
+
+  .stat-card-info h3 {
+    font-size: 14px;
+  }
+
+  .stat-card-info p {
+    font-size: 18px;
+  }
+
+  .stat-card-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+  }
+}
+
+/* =========================
+   HALAMAN TENTANG & KONTAK
+========================= */
+
+.about-hero {
+  margin: 0 20px 24px;
+  padding: 70px 20px;
+  background: linear-gradient(rgba(90, 52, 52, 0.78), rgba(212, 131, 99, 0.62)),
+    url("https://images.unsplash.com/photo-1502982720700-bfff97f2ecac?auto=format&fit=crop&w=1200&q=80");
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  color: var(--white);
+  text-align: center;
+}
+
+.contact-hero {
+  background: linear-gradient(rgba(90, 52, 52, 0.78), rgba(212, 131, 99, 0.62)),
+    url("https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80");
+  background-size: cover;
+  background-position: center;
+}
+
+.about-hero-content {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.about-logo {
+  width: 120px;
+  background: var(--white);
+  padding: 8px 12px;
+  border-radius: 12px;
+  margin-bottom: 14px;
+}
+
+.about-hero h1 {
+  font-size: 38px;
+  margin-bottom: 12px;
+}
+
+.about-hero p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.about-section {
+  padding: 0 20px 30px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+.about-card {
+  background: var(--white);
+  padding: 22px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border-left: 5px solid var(--secondary);
+}
+
+.about-card h2 {
+  color: var(--primary);
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.about-card p,
+.about-card li {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.about-card ul {
+  padding-left: 20px;
+}
+
+.about-highlight,
+.contact-box {
+  margin: 0 20px 35px;
+  padding: 35px 24px;
+  background: var(--primary);
+  color: var(--white);
+  text-align: center;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.about-highlight h2,
+.contact-box h2 {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.about-highlight p,
+.contact-box p {
+  max-width: 720px;
+  margin: 0 auto 20px;
+  line-height: 1.7;
+}
+
+.about-button {
+  display: inline-block;
+  background: var(--secondary);
+  color: var(--white);
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.about-button:hover {
+  background: #c06f4f;
+  transform: translateY(-3px);
+}
+
+.contact-schedule {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  max-width: 680px;
+  margin: 20px auto;
+}
+
+.contact-schedule div {
+  background: rgba(255, 255, 255, 0.12);
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.contact-schedule strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 17px;
+}
+
+.contact-note {
+  font-style: italic;
+}
+
+@media (min-width: 768px) {
+  .about-section {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .contact-schedule {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .about-hero {
+    margin: 0 12px 18px;
+    padding: 50px 16px;
+  }
+
+  .about-logo {
+    width: 95px;
+  }
+
+  .about-hero h1 {
+    font-size: 26px;
+  }
+
+  .about-hero p {
+    font-size: 14px;
+  }
+
+  .about-section {
+    padding: 0 12px 24px;
+  }
+
+  .about-card {
+    padding: 16px;
+  }
+
+  .about-card h2 {
+    font-size: 20px;
+  }
+
+  .about-highlight,
+  .contact-box {
+    margin: 0 12px 28px;
+    padding: 26px 16px;
+  }
+
+  .about-highlight h2,
+  .contact-box h2 {
+    font-size: 22px;
+  }
+
+  .about-button {
+    width: 100%;
+    text-align: center;
+  }
+}
