@@ -9,7 +9,9 @@ class ReservasiController extends Controller
 {
     public function index()
     {
-        $reservasis = Reservasi::latest()->paginate(10);
+        $reservasis = Reservasi::where('user_id', auth()->id())
+            ->latest()
+            ->paginate(10);
 
         return view('reservasi.index', compact('reservasis'));
     }
@@ -81,6 +83,7 @@ class ReservasiController extends Controller
         ]);
 
         $validatedData['harga'] = $daftarHarga[$validatedData['paket_foto']];
+        $validatedData['user_id'] = auth()->id();
 
         Reservasi::create($validatedData);
 

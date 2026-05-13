@@ -49,5 +49,28 @@
                 Kontak
             </a>
         </li>
+
+        @auth
+            <li class="nav-user">
+                <span class="nav-user-name">
+                    Halo, {{ auth()->user()->name }}
+                </span>
+            </li>
+
+            <li>
+                <form action="{{ route('logout') }}" method="POST" class="nav-logout-form">
+                    @csrf
+                    <button type="submit" class="nav-logout-button">
+                        Logout
+                    </button>
+                </form>
+            </li>
+        @else
+            <li>
+                <a href="{{ route('login') }}" class="{{ request()->routeIs('login') ? 'nav-active' : '' }}">
+                    Login
+                </a>
+            </li>
+        @endauth
     </ul>
 </nav>

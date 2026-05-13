@@ -13,11 +13,15 @@ Route::view('/tentang', 'tentang')->name('tentang');
 
 Route::view('/kontak', 'kontak')->name('kontak');
 
-Route::get('/profil', [ProfilController::class, 'index'])->name('profil.index');
-Route::put('/profil', [ProfilController::class, 'update'])->name('profil.update');
-
 Route::get('/hitung/{a}/{b}', function ($a, $b) {
     return $a + $b;
 });
 
-Route::resource('reservasi', ReservasiController::class);
+Route::middleware(['auth', 'cekowner'])->group(function () {
+    Route::get('/profil', [ProfilController::class, 'index'])->name('profil.index');
+    Route::put('/profil', [ProfilController::class, 'update'])->name('profil.update');
+
+    Route::resource('reservasi', ReservasiController::class);
+});
+
+require __DIR__.'/auth.php';
