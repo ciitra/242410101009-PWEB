@@ -9,6 +9,7 @@ class ReservasiSeeder extends Seeder
 {
     public function run(): void
     {
+        // 1. Data Manual Utama
         $reservasis = [
             [
                 'kode_booking' => 'BK001',
@@ -125,7 +126,62 @@ class ReservasiSeeder extends Seeder
         ];
 
         foreach ($reservasis as $reservasi) {
-            Reservasi::create($reservasi);
+            Reservasi::updateOrCreate(
+                ['kode_booking' => $reservasi['kode_booking']],
+                $reservasi
+            );
+        }
+
+        // 2. Data Dummy Tambahan agar pagination paginate(10) terlihat bekerja
+        // Total data dibuat sampai BK025, sehingga halaman reservasi memiliki 3 halaman.
+        $paketList = [
+            'Paket Indie' => 50000,
+            'Paket LensArt' => 80000,
+            'Paket Kalcer' => 120000,
+            'Paket Custom' => 150000,
+        ];
+
+        $namaDummy = [
+            'Nadia Prameswari',
+            'Raka Mahendra',
+            'Salsa Aurelia',
+            'Reno Pratama',
+            'Maya Anggraini',
+            'Daffa Nugraha',
+            'Putri Amelia',
+            'Ilham Ramadhan',
+            'Nabila Safitri',
+            'Rizky Firmansyah',
+            'Dewi Kartika',
+            'Ardiansyah Putra',
+            'Laras Permata',
+            'Fikri Maulana',
+            'Zahra Aulia',
+            'Bagas Saputra',
+            'Tiara Maharani',
+        ];
+
+        for ($i = 9; $i <= 25; $i++) {
+            $paketNama = array_keys($paketList)[($i - 9) % count($paketList)];
+            $nomor = str_pad($i, 3, '0', STR_PAD_LEFT);
+            $nama = $namaDummy[($i - 9) % count($namaDummy)];
+
+            Reservasi::updateOrCreate(
+                ['kode_booking' => 'BK' . $nomor],
+                [
+                    'nama_pelanggan' => $nama,
+                    'email' => 'pelanggan' . $nomor . '@example.com',
+                    'username_instagram' => '@pelanggan_' . $nomor,
+                    'no_hp' => '08990000' . $nomor,
+                    'jumlah_orang' => rand(1, 5),
+                    'paket_foto' => $paketNama,
+                    'harga' => $paketList[$paketNama],
+                    'tanggal_reservasi' => '2026-05-' . str_pad((($i - 1) % 28) + 1, 2, '0', STR_PAD_LEFT),
+                    'jam_reservasi' => str_pad(8 + (($i - 9) % 10), 2, '0', STR_PAD_LEFT) . ':00',
+                    'aktif' => $i % 5 !== 0,
+                    'foto' => null,
+                ]
+            );
         }
     }
 }

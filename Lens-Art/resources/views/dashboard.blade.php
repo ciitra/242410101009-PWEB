@@ -77,155 +77,130 @@
             </div>
         </section>
 
-        <section id="daftar-booking" class="booking-section">
-            <h2 class="section-title">Data Reservasi</h2>
-            <p class="section-desc">
-                Berikut adalah data pelanggan yang telah melakukan reservasi di Studio LensArt.
-            </p>
+        <section id="daftar-booking" class="dashboard-reservasi-section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Preview Data Reservasi</h2>
+                    <p class="section-desc">
+                        Ringkasan data reservasi pelanggan Studio LensArt berdasarkan filter paket foto.
+                    </p>
+                </div>
 
-            <form class="search-form" id="searchForm">
-                <input type="text" id="searchInput" placeholder="Cari berdasarkan nama pelanggan atau kode booking...">
-                <button type="button">Cari</button>
-            </form>
+                <a href="{{ route('reservasi.index') }}" class="btn-secondary">
+                    Kelola Data Lengkap
+                </a>
+            </div>
 
-            <div class="table-container">
-                <table>
+            <div class="table-container dashboard-reservasi-table">
+                <table class="reservasi-table">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Kode Booking</th>
-                            <th>Nama Pelanggan</th>
-                            <th>Email</th>
-                            <th>Username Instagram</th>
-                            <th>No. HP</th>
-                            <th>Jumlah Orang</th>
-                            <th>Paket Foto</th>
-                            <th>Harga</th>
-                            <th>Tanggal Reservasi</th>
-                            <th>Jam Reservasi</th>
-                            <th>Aksi</th>
+                            <th>Kode</th>
+                            <th>Pelanggan</th>
+                            <th>Paket</th>
+                            <th>Jadwal</th>
+                            <th>Jumlah</th>
                         </tr>
                     </thead>
 
-                    <tbody id="reservationBody">
-                        @forelse ($reservasiDummies as $reservasi)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $reservasi['kode'] }}</td>
-                                <td>{{ $reservasi['nama'] }}</td>
-                                <td>{{ $reservasi['email'] }}</td>
-                                <td>{{ $reservasi['instagram'] }}</td>
-                                <td>{{ $reservasi['no_hp'] }}</td>
-                                <td>{{ $reservasi['jumlah_orang'] }}</td>
-                                <td>{{ $reservasi['paket'] }}</td>
-                                <td>{{ $reservasi['harga'] }}</td>
-                                <td>{{ $reservasi['tanggal'] }}</td>
-                                <td>{{ $reservasi['jam'] }}</td>
+                    <tbody id="dashboardReservationBody">
+                        @forelse ($reservasiDummies as $index => $reservasi)
+                            <tr data-paket="{{ $reservasi['paket'] }}">
+                                <td class="table-number">{{ $index + 1 }}</td>
+
                                 <td>
-                                    <div class="action-buttons">
-                                        <button type="button" class="btn-edit" data-action="edit" data-index="{{ $loop->index }}">Edit</button>
-                                        <button type="button" class="btn-delete" data-action="delete" data-index="{{ $loop->index }}">Hapus</button>
+                                    <strong class="booking-code">
+                                        #{{ $reservasi['kode'] }}
+                                    </strong>
+                                </td>
+
+                                <td>
+                                    <div class="customer-cell">
+                                        <strong>{{ $reservasi['nama'] }}</strong>
+                                        <span>{{ $reservasi['email'] }}</span>
                                     </div>
+                                </td>
+
+                                <td>
+                                    <span class="package-badge">
+                                        {{ $reservasi['paket'] }}
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <div class="schedule-cell">
+                                        <strong>{{ date('d M Y', strtotime($reservasi['tanggal'])) }}</strong>
+                                        <span>{{ $reservasi['jam'] }}</span>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    {{ $reservasi['jumlah_orang'] }} Orang
                                 </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="12" class="empty-state">Data reservasi belum tersedia.</td>
+                                <td colspan="6" class="empty-state">
+                                    Data reservasi belum tersedia.
+                                </td>
                             </tr>
                         @endforelse
                     </tbody>
-
-                    <tfoot>
-                        <tr>
-                            <td colspan="11"><strong>Total Reservasi</strong></td>
-                            <td><strong id="tableTotalReservasi">{{ count($reservasiDummies) }}</strong></td>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
 
-            <section class="tambah-reservasi-section">
-                <h3 class="sub-title" id="formTitle">Daftar Reservasi</h3>
-
-                <div id="formMessage" class="form-message"></div>
-
-                <form class="tambah-reservasi-form" id="reservationForm">
-                    <input type="hidden" id="editIndex" value="-1">
-
-                    <div class="form-group">
-                        <input type="text" id="kodeBooking" placeholder="Kode Booking" required>
-                        <small class="error-text" id="errorKodeBooking"></small>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" id="namaPelanggan" placeholder="Nama Pelanggan" required>
-                        <small class="error-text" id="errorNamaPelanggan"></small>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="email" id="email" placeholder="Email" required>
-                        <small class="error-text" id="errorEmail"></small>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" id="usernameInstagram" placeholder="Username Instagram" required>
-                        <small class="error-text" id="errorUsernameInstagram"></small>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" id="noHp" placeholder="No. HP" required>
-                        <small class="error-text" id="errorNoHp"></small>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="number" id="jumlahOrang" placeholder="Jumlah Orang" required>
-                        <small class="error-text" id="errorJumlahOrang"></small>
-                    </div>
-
-                    <div class="form-group">
-                        <select id="paketFoto" required>
-                            <option value="">Pilih Paket Foto</option>
-
-                            @forelse ($filterPakets as $paket)
-                                <option value="{{ $paket }}">{{ $paket }}</option>
-                            @empty
-                                <option value="">Paket belum tersedia</option>
-                            @endforelse
-                        </select>
-                        <small class="error-text" id="errorPaketFoto"></small>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" id="hargaDisplay" placeholder="Harga Paket Otomatis" readonly>
-                        <small class="error-text" id="errorHargaDisplay"></small>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="date" id="tanggalReservasi" required>
-                        <small class="error-text" id="errorTanggalReservasi"></small>
-                    </div>
-
-                    <div class="form-group">
-                        <select id="jamReservasi" required>
-                            <option value="">Pilih Jam Reservasi</option>
-
-                            @forelse ($jamReservasis as $jam)
-                                <option value="{{ $jam }}">{{ $jam }}</option>
-                            @empty
-                                <option value="">Jam reservasi belum tersedia</option>
-                            @endforelse
-                        </select>
-                        <small class="error-text" id="errorJamReservasi"></small>
-                    </div>
-
-                    <div class="form-actions">
-                        <button type="submit" id="submitBtn">Simpan Reservasi</button>
-                        <button type="button" id="cancelEditBtn" class="btn-secondary hidden">Batal Edit</button>
-                    </div>
-                </form>
-            </section>
+            <p id="dashboardFilterInfo" class="dashboard-filter-info">
+                Menampilkan semua data reservasi.
+            </p>
         </section>
     </section>
 </main>
 
 @endsection
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const filterCheckboxes = document.querySelectorAll('.filter-paket');
+        const rows = document.querySelectorAll('#dashboardReservationBody tr[data-paket]');
+        const filterInfo = document.getElementById('dashboardFilterInfo');
+
+        function getActiveFilters() {
+            return Array.from(filterCheckboxes)
+                .filter((checkbox) => checkbox.checked)
+                .map((checkbox) => checkbox.value);
+        }
+
+        function filterDashboardReservasi() {
+            const activeFilters = getActiveFilters();
+            let visibleCount = 0;
+
+            rows.forEach((row) => {
+                const paket = row.dataset.paket;
+                const isVisible = activeFilters.length === 0 || activeFilters.includes(paket);
+
+                row.style.display = isVisible ? '' : 'none';
+
+                if (isVisible) {
+                    visibleCount++;
+                }
+            });
+
+            if (filterInfo) {
+                if (activeFilters.length === 0) {
+                    filterInfo.textContent = 'Menampilkan semua data reservasi.';
+                } else {
+                    filterInfo.textContent = 'Menampilkan ' + visibleCount + ' data berdasarkan filter: ' + activeFilters.join(', ') + '.';
+                }
+            }
+        }
+
+        filterCheckboxes.forEach((checkbox) => {
+            checkbox.addEventListener('change', filterDashboardReservasi);
+        });
+
+        filterDashboardReservasi();
+    });
+</script>
+@endpush
