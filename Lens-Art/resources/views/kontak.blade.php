@@ -4,16 +4,18 @@
 
 @section('content')
 
-<section class="about-hero contact-hero">
-    <div class="about-hero-content">
-        <img src="{{ asset('images/logo-lensart.png') }}" alt="Logo Studio LensArt" class="about-logo">
+<header class="hero kontak-hero">
+    <div class="hero-overlay hero-center-content">
+        <img src="{{ asset('images/logo-lensart.png') }}" alt="Logo Studio LensArt" class="hero-logo-fixed">
+
         <h1>Kontak Studio LensArt</h1>
+
         <p>
             Punya pertanyaan tentang paket foto, jadwal reservasi, atau konsep pemotretan?
             Hubungi Studio LensArt melalui informasi kontak berikut.
         </p>
     </div>
-</section>
+</header>
 
 <section class="about-section">
     <div class="about-card">

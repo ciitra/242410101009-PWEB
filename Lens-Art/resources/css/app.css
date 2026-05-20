@@ -2592,3 +2592,3243 @@ input[readonly] {
   background: #fff7f2;
   color: var(--primary);
 }
+
+/* =========================
+   NAVBAR USER AVATAR
+========================= */
+
+.nav-user-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--secondary);
+  color: var(--white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+}
+
+/* =========================
+   CUSTOMER PROFILE AVATAR
+========================= */
+
+.profil-customer-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 54px;
+  font-weight: 800;
+  color: var(--white);
+  background: var(--secondary);
+}
+
+/* =========================
+   CUSTOMER DASHBOARD PAGE
+========================= */
+
+.customer-dashboard-page {
+  padding: 34px 28px 54px;
+}
+
+/* HERO CUSTOMER */
+.customer-hero {
+  background:
+    linear-gradient(135deg, rgba(90, 52, 52, 0.92), rgba(212, 131, 99, 0.72)),
+    url("/images/hero-camera.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 24px;
+  padding: 46px;
+  display: grid;
+  grid-template-columns: 1.6fr 0.8fr;
+  gap: 30px;
+  align-items: center;
+  color: var(--white);
+  box-shadow: var(--shadow);
+  margin-bottom: 34px;
+  overflow: hidden;
+  position: relative;
+}
+
+.customer-hero::after {
+  content: "";
+  position: absolute;
+  right: -80px;
+  top: -80px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.customer-hero-content,
+.customer-hero-card {
+  position: relative;
+  z-index: 1;
+}
+
+.customer-eyebrow {
+  display: inline-block;
+  background: rgba(255, 247, 242, 0.92);
+  color: var(--primary);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.customer-hero h1 {
+  font-size: 42px;
+  line-height: 1.18;
+  margin-bottom: 16px;
+  color: var(--white);
+}
+
+.customer-hero p {
+  max-width: 680px;
+  line-height: 1.8;
+  font-size: 16px;
+  color: #fff7f2;
+  margin-bottom: 24px;
+}
+
+.customer-hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.customer-hero-card {
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--primary);
+  border-radius: 22px;
+  padding: 28px;
+  text-align: center;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+}
+
+.customer-avatar-large {
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  background: var(--secondary);
+  color: var(--white);
+  display: grid;
+  place-items: center;
+  font-size: 34px;
+  font-weight: 900;
+  margin: 0 auto 16px;
+  box-shadow: 0 12px 28px rgba(212, 131, 99, 0.35);
+}
+
+.customer-hero-card h3 {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.customer-hero-card p {
+  color: #7a6761;
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+
+.customer-role-badge {
+  display: inline-block;
+  background: #fff7f2;
+  color: var(--primary);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+/* PACKAGE SECTION */
+.customer-package-section {
+  margin-bottom: 34px;
+}
+
+.customer-section-header {
+  margin-bottom: 18px;
+}
+
+.customer-package-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.customer-package-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  border-top: 5px solid var(--secondary);
+  position: relative;
+  transition: 0.3s ease;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+}
+
+.customer-package-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 36px rgba(90, 52, 52, 0.16);
+}
+
+.customer-package-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  background: #fff7f2;
+  display: grid;
+  place-items: center;
+  font-size: 26px;
+  margin-bottom: 16px;
+}
+
+.customer-package-card h3 {
+  color: var(--primary);
+  font-size: 23px;
+  margin-bottom: 10px;
+}
+
+.customer-package-card p {
+  color: #6f615d;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.customer-package-card strong {
+  color: var(--secondary);
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+
+.customer-package-button {
+  display: inline-block;
+  text-align: center;
+  background: var(--primary);
+  color: var(--white);
+  padding: 11px 14px;
+  border-radius: 12px;
+  font-weight: 800;
+  transition: 0.3s ease;
+}
+
+.customer-package-button:hover {
+  background: var(--secondary);
+}
+
+.package-popular {
+  border-top-color: #2f9c7c;
+}
+
+.popular-badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: #e8fff6;
+  color: #17835f;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+/* FEATURE SECTION */
+.customer-feature-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-bottom: 34px;
+}
+
+.customer-feature-card {
+  background: #fffaf7;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+
+.customer-feature-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: var(--white);
+  display: grid;
+  place-items: center;
+  font-size: 25px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow);
+}
+
+.customer-feature-card h3 {
+  color: var(--primary);
+  font-size: 21px;
+  margin-bottom: 8px;
+}
+
+.customer-feature-card p {
+  color: #6f615d;
+  line-height: 1.7;
+}
+
+/* CTA */
+.customer-cta {
+  background: var(--primary);
+  color: var(--white);
+  border-radius: 22px;
+  padding: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  box-shadow: var(--shadow);
+}
+
+.customer-cta h2 {
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.customer-cta p {
+  color: #fff7f2;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .customer-package-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .customer-hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .customer-dashboard-page {
+    padding: 24px 18px 42px;
+  }
+
+  .customer-hero {
+    padding: 30px 24px;
+  }
+
+  .customer-hero h1 {
+    font-size: 32px;
+  }
+
+  .customer-feature-section {
+    grid-template-columns: 1fr;
+  }
+
+  .customer-cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 576px) {
+  .customer-package-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .customer-hero h1 {
+    font-size: 28px;
+  }
+
+  .customer-hero-actions {
+    flex-direction: column;
+  }
+
+  .customer-hero-actions a {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* =========================
+   CUSTOMER DASHBOARD REFINEMENT
+   Clean, Premium, Minimal
+========================= */
+
+.customer-dashboard-page {
+  padding: 42px 34px 64px;
+  background: #f8f2ef;
+}
+
+/* HERO REFINEMENT */
+.customer-hero {
+  min-height: 420px;
+  padding: 56px 60px;
+  border-radius: 26px;
+  margin-bottom: 46px;
+  background:
+    linear-gradient(135deg, rgba(90, 52, 52, 0.92), rgba(143, 88, 76, 0.82)),
+    url("/images/hero-camera.jpg");
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 18px 45px rgba(90, 52, 52, 0.16);
+  overflow: hidden;
+}
+
+.customer-hero::after {
+  opacity: 0.55;
+}
+
+.customer-eyebrow {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--primary);
+  padding: 8px 16px;
+  font-size: 12px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.customer-hero h1 {
+  max-width: 780px;
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  line-height: 1.18;
+  margin-bottom: 18px;
+}
+
+.customer-hero p {
+  max-width: 620px;
+  color: rgba(255, 247, 242, 0.92);
+  font-size: 16px;
+  line-height: 1.75;
+  margin-bottom: 28px;
+}
+
+.customer-hero-actions {
+  gap: 12px;
+}
+
+.customer-hero-actions .btn-create,
+.customer-hero-actions .btn-secondary {
+  min-width: 160px;
+  text-align: center;
+  border-radius: 12px;
+  padding: 13px 18px;
+}
+
+.customer-hero-card {
+  border-radius: 24px;
+  padding: 32px 26px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 18px 44px rgba(47, 35, 35, 0.18);
+}
+
+.customer-avatar-large {
+  width: 78px;
+  height: 78px;
+  font-size: 30px;
+  background: var(--secondary);
+  box-shadow: 0 12px 26px rgba(212, 131, 99, 0.28);
+}
+
+.customer-hero-card h3 {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.customer-hero-card p {
+  margin-bottom: 12px;
+  color: #7b625b;
+}
+
+.customer-role-badge {
+  background: #fff4ee;
+  color: var(--primary);
+  font-size: 12px;
+}
+
+/* PACKAGE SECTION REFINEMENT */
+.customer-package-section {
+  margin-bottom: 46px;
+}
+
+.customer-section-header {
+  margin-bottom: 24px;
+}
+
+.customer-section-header .section-title {
+  font-size: 34px;
+  letter-spacing: -0.4px;
+  margin-bottom: 8px;
+}
+
+.customer-section-header .section-desc {
+  max-width: 620px;
+  color: #6f615d;
+}
+
+.customer-package-grid {
+  gap: 24px;
+}
+
+.customer-package-card {
+  min-height: 330px;
+  padding: 28px 26px;
+  border-radius: 22px;
+  border: 1px solid #eadbd4;
+  border-top: 4px solid var(--secondary);
+  box-shadow: 0 14px 34px rgba(90, 52, 52, 0.08);
+  background: #ffffff;
+}
+
+.customer-package-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 42px rgba(90, 52, 52, 0.13);
+}
+
+.customer-package-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  font-size: 20px;
+  margin-bottom: 22px;
+  background: #fff4ee;
+  opacity: 0.9;
+}
+
+.customer-package-card h3 {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  margin-bottom: 12px;
+}
+
+.customer-package-card p {
+  color: #6c5d58;
+  font-size: 15px;
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+
+.customer-package-card strong {
+  font-size: 24px;
+  color: var(--secondary);
+  margin-top: auto;
+  margin-bottom: 18px;
+}
+
+.customer-package-button {
+  width: 100%;
+  border-radius: 12px;
+  padding: 13px 16px;
+  background: var(--primary);
+  color: var(--white);
+  font-weight: 800;
+  letter-spacing: 0.1px;
+}
+
+.customer-package-button:hover {
+  background: var(--secondary);
+}
+
+.package-popular {
+  border-top-color: #2f9c7c;
+}
+
+.popular-badge {
+  top: 18px;
+  right: 18px;
+  background: #edf9f4;
+  color: #17835f;
+  font-size: 11px;
+  padding: 7px 12px;
+  letter-spacing: 0.2px;
+}
+
+/* FEATURE SECTION REFINEMENT */
+.customer-feature-section {
+  gap: 24px;
+  margin-bottom: 46px;
+}
+
+.customer-feature-card {
+  background: #ffffff;
+  border: 1px solid #eadbd4;
+  border-radius: 22px;
+  padding: 28px;
+  box-shadow: 0 14px 32px rgba(90, 52, 52, 0.07);
+}
+
+.customer-feature-icon {
+  width: 42px;
+  height: 42px;
+  font-size: 20px;
+  margin-bottom: 18px;
+  background: #fff4ee;
+  box-shadow: none;
+}
+
+.customer-feature-card h3 {
+  font-size: 21px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.customer-feature-card p {
+  font-size: 15px;
+  color: #6c5d58;
+}
+
+/* CTA REFINEMENT */
+.customer-cta {
+  border-radius: 24px;
+  padding: 34px 36px;
+  background: linear-gradient(135deg, var(--primary), #744242);
+  box-shadow: 0 16px 40px rgba(90, 52, 52, 0.14);
+}
+
+.customer-cta h2 {
+  font-size: 26px;
+  letter-spacing: -0.3px;
+}
+
+.customer-cta p {
+  color: rgba(255, 247, 242, 0.9);
+  line-height: 1.7;
+}
+
+.customer-cta .btn-create {
+  border-radius: 12px;
+  padding: 13px 20px;
+  white-space: nowrap;
+}
+
+/* RESPONSIVE REFINEMENT */
+@media (max-width: 1100px) {
+  .customer-hero {
+    padding: 44px;
+  }
+
+  .customer-hero h1 {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 768px) {
+  .customer-dashboard-page {
+    padding: 28px 18px 48px;
+  }
+
+  .customer-hero {
+    padding: 34px 26px;
+    min-height: auto;
+  }
+
+  .customer-hero h1 {
+    font-size: 32px;
+  }
+
+  .customer-package-card {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .customer-hero h1 {
+    font-size: 28px;
+  }
+
+  .customer-section-header .section-title {
+    font-size: 28px;
+  }
+
+  .customer-cta {
+    padding: 28px 24px;
+  }
+}
+
+/* =========================
+   FIX HERO LOGO TENTANG & KONTAK
+========================= */
+
+.hero-center-content {
+  width: 100%;
+  min-height: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.hero-logo-fixed {
+  display: block !important;
+  width: 140px !important;
+  max-width: 140px !important;
+  height: auto !important;
+  margin: 0 auto 28px auto !important;
+  position: static !important;
+  transform: none !important;
+  animation: none !important;
+  object-fit: contain !important;
+}
+
+.hero-center-content h1 {
+  text-align: center !important;
+  margin: 0 auto 18px auto !important;
+}
+
+.hero-center-content p {
+  max-width: 820px;
+  text-align: center !important;
+  margin: 0 auto !important;
+  line-height: 1.7;
+}
+
+/* =========================
+   PUBLIC LANDING PAGE
+   Studio LensArt
+========================= */
+
+.landing-page {
+  background: #f8f2ef;
+  padding: 32px 28px 58px;
+}
+
+/* HERO */
+.landing-hero {
+  min-height: 520px;
+  border-radius: 28px;
+  padding: 58px 64px;
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 38px;
+  align-items: center;
+  background:
+    linear-gradient(135deg, rgba(90, 52, 52, 0.92), rgba(143, 88, 76, 0.78)),
+    url("/images/hero-camera.jpg");
+  background-size: cover;
+  background-position: center;
+  color: var(--white);
+  box-shadow: 0 20px 48px rgba(90, 52, 52, 0.18);
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 58px;
+}
+
+.landing-hero::after {
+  content: "";
+  position: absolute;
+  right: -90px;
+  top: -90px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.landing-hero-content,
+.landing-hero-preview {
+  position: relative;
+  z-index: 1;
+}
+
+.landing-eyebrow,
+.landing-section-label {
+  display: inline-block;
+  background: rgba(255, 247, 242, 0.94);
+  color: var(--primary);
+  padding: 8px 15px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.landing-hero h1 {
+  max-width: 760px;
+  color: var(--white);
+  font-size: 48px;
+  line-height: 1.14;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 18px;
+}
+
+.landing-hero p {
+  max-width: 620px;
+  color: rgba(255, 247, 242, 0.92);
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.landing-hero-actions,
+.landing-cta-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.landing-hero-actions .btn-create,
+.landing-hero-actions .btn-secondary,
+.landing-cta-actions .btn-create,
+.landing-cta-actions .btn-secondary {
+  min-width: 135px;
+  text-align: center;
+  border-radius: 12px;
+  padding: 13px 20px;
+}
+
+/* HERO PREVIEW */
+.landing-hero-preview {
+  display: flex;
+  justify-content: center;
+}
+
+.landing-preview-card {
+  width: 100%;
+  max-width: 330px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--primary);
+  border-radius: 26px;
+  padding: 34px 28px;
+  text-align: center;
+  box-shadow: 0 22px 46px rgba(47, 35, 35, 0.2);
+}
+
+.landing-preview-card img {
+  width: 145px;
+  height: auto;
+  margin-bottom: 22px;
+  background: var(--white);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 12px 26px rgba(90, 52, 52, 0.12);
+}
+
+.landing-preview-card h3 {
+  font-size: 25px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.landing-preview-card p {
+  color: #725f5a;
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* SECTION HEADER */
+.landing-about-section,
+.landing-package-section {
+  margin-bottom: 58px;
+}
+
+.landing-section-header {
+  max-width: 760px;
+  margin-bottom: 26px;
+}
+
+.landing-section-header h2 {
+  color: var(--primary);
+  font-size: 36px;
+  line-height: 1.24;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+}
+
+.landing-section-header p {
+  color: #6f615d;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+/* BENEFIT */
+.landing-benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.landing-benefit-card {
+  background: var(--white);
+  border: 1px solid #eadbd4;
+  border-left: 5px solid var(--secondary);
+  border-radius: 22px;
+  padding: 26px;
+  box-shadow: 0 14px 34px rgba(90, 52, 52, 0.08);
+}
+
+.landing-benefit-card h3 {
+  color: var(--primary);
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.landing-benefit-card p {
+  color: #6f615d;
+  line-height: 1.75;
+}
+
+/* PACKAGE */
+.landing-package-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.landing-package-card {
+  min-height: 285px;
+  background: var(--white);
+  border: 1px solid #eadbd4;
+  border-top: 4px solid var(--secondary);
+  border-radius: 22px;
+  padding: 28px 26px;
+  box-shadow: 0 14px 34px rgba(90, 52, 52, 0.08);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: 0.3s ease;
+}
+
+.landing-package-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 42px rgba(90, 52, 52, 0.13);
+}
+
+.landing-package-card h3 {
+  color: var(--primary);
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  margin-bottom: 12px;
+}
+
+.landing-package-card p {
+  color: #6c5d58;
+  line-height: 1.75;
+  margin-bottom: 22px;
+}
+
+.landing-package-card strong {
+  color: var(--secondary);
+  font-size: 24px;
+  margin-top: auto;
+}
+
+.landing-package-popular {
+  border-top-color: #2f9c7c;
+}
+
+.landing-popular-badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: #edf9f4;
+  color: #17835f;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+/* CTA */
+.landing-cta-section {
+  background: linear-gradient(135deg, var(--primary), #744242);
+  color: var(--white);
+  border-radius: 26px;
+  padding: 38px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 28px;
+  box-shadow: 0 18px 42px rgba(90, 52, 52, 0.16);
+}
+
+.landing-cta-section h2 {
+  color: var(--white);
+  font-size: 30px;
+  letter-spacing: -0.4px;
+  margin-bottom: 10px;
+}
+
+.landing-cta-section p {
+  color: rgba(255, 247, 242, 0.9);
+  line-height: 1.7;
+  max-width: 640px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .landing-hero {
+    grid-template-columns: 1fr;
+    padding: 46px;
+  }
+
+  .landing-hero-preview {
+    justify-content: flex-start;
+  }
+
+  .landing-package-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .landing-benefit-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .landing-page {
+    padding: 24px 18px 48px;
+  }
+
+  .landing-hero {
+    padding: 36px 26px;
+    min-height: auto;
+  }
+
+  .landing-hero h1 {
+    font-size: 34px;
+  }
+
+  .landing-section-header h2 {
+    font-size: 30px;
+  }
+
+  .landing-cta-section {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px 26px;
+  }
+}
+
+@media (max-width: 576px) {
+  .landing-package-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .landing-hero h1 {
+    font-size: 29px;
+  }
+
+  .landing-hero-actions,
+  .landing-cta-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .landing-hero-actions a,
+  .landing-cta-actions a {
+    width: 100%;
+  }
+}
+
+/* =========================
+   PUBLIC MINIMAL LANDING
+========================= */
+
+.landing-body {
+  margin: 0;
+  background: #f8f2ef;
+  color: var(--primary);
+  min-height: 100vh;
+}
+
+.public-landing {
+  min-height: 100vh;
+  padding: 28px;
+  background:
+    radial-gradient(circle at top right, rgba(212, 131, 99, 0.20), transparent 32%),
+    linear-gradient(135deg, #f8f2ef 0%, #fffaf7 100%);
+}
+
+.public-landing-nav {
+  max-width: 1180px;
+  margin: 0 auto 26px;
+  padding: 18px 22px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid #eadbd4;
+  border-radius: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 14px 34px rgba(90, 52, 52, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.public-landing-brand {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--primary);
+}
+
+.public-landing-menu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.public-nav-link {
+  color: var(--primary);
+  font-weight: 800;
+  padding: 10px 14px;
+}
+
+.public-nav-button {
+  background: var(--secondary);
+  color: var(--white);
+  padding: 11px 18px;
+  border-radius: 999px;
+  font-weight: 800;
+  box-shadow: 0 10px 24px rgba(212, 131, 99, 0.26);
+}
+
+.public-landing-hero {
+  max-width: 1180px;
+  min-height: 590px;
+  margin: 0 auto;
+  padding: 64px;
+  border-radius: 34px;
+  background:
+    linear-gradient(135deg, rgba(90, 52, 52, 0.94), rgba(130, 78, 68, 0.82)),
+    url("/images/hero-camera.jpg");
+  background-size: cover;
+  background-position: center;
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 44px;
+  align-items: center;
+  color: var(--white);
+  box-shadow: 0 22px 54px rgba(90, 52, 52, 0.22);
+  position: relative;
+  overflow: hidden;
+}
+
+.public-landing-hero::after {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  right: -110px;
+  top: -110px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.public-hero-content,
+.public-hero-visual {
+  position: relative;
+  z-index: 1;
+}
+
+.public-hero-label {
+  display: inline-block;
+  background: rgba(255, 247, 242, 0.94);
+  color: var(--primary);
+  padding: 9px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.public-hero-content h1 {
+  max-width: 760px;
+  font-size: 56px;
+  line-height: 1.08;
+  letter-spacing: -1.4px;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.public-hero-content p {
+  max-width: 620px;
+  font-size: 17px;
+  line-height: 1.8;
+  color: rgba(255, 247, 242, 0.92);
+  margin-bottom: 30px;
+}
+
+.public-hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.public-primary-button,
+.public-secondary-button {
+  min-width: 140px;
+  text-align: center;
+  padding: 14px 22px;
+  border-radius: 14px;
+  font-weight: 900;
+  transition: 0.3s ease;
+}
+
+.public-primary-button {
+  background: var(--secondary);
+  color: var(--white);
+  box-shadow: 0 12px 28px rgba(212, 131, 99, 0.28);
+}
+
+.public-secondary-button {
+  background: rgba(255, 255, 255, 0.18);
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.26);
+}
+
+.public-primary-button:hover,
+.public-secondary-button:hover,
+.public-nav-button:hover {
+  transform: translateY(-3px);
+}
+
+.public-hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.public-studio-card {
+  width: 100%;
+  max-width: 350px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--primary);
+  border-radius: 28px;
+  padding: 34px 30px;
+  text-align: center;
+  box-shadow: 0 22px 46px rgba(47, 35, 35, 0.20);
+}
+
+.public-logo-frame {
+  width: 132px;
+  height: 132px;
+  margin: 0 auto 22px;
+  background: var(--white);
+  border-radius: 24px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 14px 30px rgba(90, 52, 52, 0.12);
+}
+
+.public-logo-frame img {
+  width: 92px;
+  height: auto;
+}
+
+.public-studio-card h2 {
+  font-size: 28px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.public-studio-card p {
+  color: #78625b;
+  margin-bottom: 20px;
+}
+
+.public-mini-info {
+  display: grid;
+  gap: 9px;
+}
+
+.public-mini-info span {
+  background: #fff4ee;
+  color: var(--primary);
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.public-info-strip {
+  max-width: 1180px;
+  margin: 24px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.public-info-strip article {
+  background: var(--white);
+  border: 1px solid #eadbd4;
+  border-radius: 20px;
+  padding: 20px 22px;
+  box-shadow: 0 12px 28px rgba(90, 52, 52, 0.07);
+}
+
+.public-info-strip strong {
+  display: block;
+  color: var(--primary);
+  font-size: 17px;
+  margin-bottom: 6px;
+}
+
+.public-info-strip span {
+  color: #6f615d;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+@media (max-width: 960px) {
+  .public-landing-hero {
+    grid-template-columns: 1fr;
+    padding: 44px;
+  }
+
+  .public-hero-content h1 {
+    font-size: 42px;
+  }
+
+  .public-hero-visual {
+    justify-content: flex-start;
+  }
+
+  .public-info-strip {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .public-landing {
+    padding: 18px;
+  }
+
+  .public-landing-nav {
+    border-radius: 18px;
+  }
+
+  .public-landing-brand {
+    font-size: 18px;
+  }
+
+  .public-landing-menu {
+    gap: 8px;
+  }
+
+  .public-nav-link,
+  .public-nav-button {
+    font-size: 13px;
+    padding: 9px 12px;
+  }
+
+  .public-landing-hero {
+    padding: 34px 24px;
+    border-radius: 24px;
+    min-height: auto;
+  }
+
+  .public-hero-content h1 {
+    font-size: 34px;
+  }
+
+  .public-hero-content p {
+    font-size: 15px;
+  }
+
+  .public-hero-actions {
+    flex-direction: column;
+  }
+
+  .public-primary-button,
+  .public-secondary-button {
+    width: 100%;
+  }
+}
+
+/* =========================
+   P1 NOMOR 1 - LENSART WEATHER CHECK
+========================= */
+
+.lensart-weather-button {
+  position: fixed;
+  right: 26px;
+  bottom: 26px;
+  z-index: 2200;
+  border: none;
+  background: var(--primary);
+  color: var(--white);
+  padding: 13px 18px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 16px 36px rgba(90, 52, 52, 0.28);
+  transition: 0.3s ease;
+}
+
+.lensart-weather-button:hover {
+  background: var(--secondary);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 42px rgba(90, 52, 52, 0.34);
+}
+
+.lensart-weather-button-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #fff7f2;
+  color: var(--primary);
+  display: grid;
+  place-items: center;
+  font-size: 17px;
+}
+
+.lensart-weather-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2300;
+  background: rgba(47, 35, 35, 0.58);
+  backdrop-filter: blur(6px);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.lensart-weather-hidden {
+  display: none !important;
+}
+
+.lensart-weather-card {
+  width: 100%;
+  max-width: 430px;
+  background: #fffaf7;
+  border-radius: 28px;
+  padding: 28px;
+  position: relative;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.25);
+  border: 1px solid #eadbd4;
+  animation: lensartWeatherPop 0.3s ease;
+}
+
+.lensart-weather-close {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--primary);
+  font-size: 25px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 12px 28px rgba(90, 52, 52, 0.22);
+  transition: 0.3s ease;
+}
+
+.lensart-weather-close:hover {
+  background: #fff4ee;
+  transform: rotate(90deg);
+}
+
+.lensart-weather-card-header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.lensart-weather-label {
+  display: inline-block;
+  background: #fff4ee;
+  color: var(--primary);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.3px;
+  margin-bottom: 12px;
+}
+
+.lensart-weather-card-header h2 {
+  color: var(--primary);
+  font-size: 27px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.lensart-weather-card-header p {
+  color: #7a625b;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.lensart-weather-loading,
+.lensart-weather-error {
+  background: var(--white);
+  color: var(--primary);
+  padding: 18px;
+  border-radius: 18px;
+  text-align: center;
+  font-weight: 900;
+  box-shadow: 0 12px 26px rgba(90, 52, 52, 0.08);
+}
+
+.lensart-weather-error {
+  color: #b33939;
+}
+
+.lensart-weather-content {
+  display: grid;
+  gap: 16px;
+}
+
+.lensart-weather-main {
+  background: linear-gradient(135deg, var(--primary), #7a4a43);
+  color: var(--white);
+  border-radius: 22px;
+  padding: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lensart-weather-city-label {
+  display: inline-block;
+  color: #fff1ea;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.lensart-weather-main h3 {
+  color: var(--white);
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.lensart-weather-temp {
+  font-size: 46px;
+  line-height: 1;
+  font-weight: 900;
+  color: var(--white);
+}
+
+.lensart-weather-desc-box {
+  background: var(--white);
+  border: 1px solid #eadbd4;
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.lensart-weather-desc-box span {
+  display: block;
+  font-size: 13px;
+  color: #7a625b;
+  margin-bottom: 8px;
+}
+
+.lensart-weather-desc-box p {
+  color: var(--primary);
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.lensart-weather-note {
+  background: #fff4ee;
+  color: #6f615d;
+  border-radius: 16px;
+  padding: 14px;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+@keyframes lensartWeatherPop {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 576px) {
+  .lensart-weather-button {
+    right: 14px;
+    bottom: 14px;
+    padding: 11px 14px;
+    font-size: 13px;
+  }
+
+  .lensart-weather-button-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .lensart-weather-card {
+    padding: 24px 20px;
+  }
+
+  .lensart-weather-main {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .lensart-weather-temp {
+    font-size: 40px;
+  }
+}
+
+/* =========================
+   P1 NOMOR 2 - LIVE SEARCH RESERVASI
+========================= */
+
+.live-search-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--secondary);
+  border-radius: 20px;
+  padding: 24px;
+  margin: 24px 0;
+  box-shadow: var(--shadow);
+}
+
+.live-search-card h2 {
+  color: var(--primary);
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.live-search-card p {
+  color: #6f615d;
+  line-height: 1.6;
+}
+
+.live-search-form {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.live-search-form input {
+  flex: 1;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 13px 15px;
+  font-size: 15px;
+  color: var(--text);
+  outline: none;
+}
+
+.live-search-form input:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 3px rgba(212, 131, 99, 0.14);
+}
+
+.live-search-info {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #7a625b;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .live-search-form {
+    flex-direction: column;
+  }
+
+  .live-search-form button {
+    width: 100%;
+  }
+}
+
+/* =========================
+   P1 NOMOR 3 - DARK MODE TOGGLE BUTTON
+========================= */
+
+.nav-theme-toggle {
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 247, 242, 0.14);
+  color: var(--white);
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.nav-theme-toggle:hover {
+  background: var(--secondary);
+  transform: translateY(-2px);
+}
+
+/* =========================
+   P1 NOMOR 3E - PREFERENCE PAGE
+========================= */
+
+.preference-section {
+  padding: 40px 28px 60px;
+}
+
+.preference-header {
+  margin-bottom: 24px;
+}
+
+.preference-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  padding: 28px;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 28px;
+}
+
+.preference-preview {
+  background:
+    linear-gradient(135deg, rgba(90, 52, 52, 0.92), rgba(212, 131, 99, 0.72)),
+    url("/images/hero-camera.jpg");
+  background-size: cover;
+  background-position: center;
+  color: var(--white);
+  border-radius: 22px;
+  padding: 32px;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.preference-preview-label {
+  display: inline-block;
+  width: fit-content;
+  background: rgba(255, 247, 242, 0.92);
+  color: var(--primary);
+  padding: 7px 13px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+
+.preference-preview h2 {
+  color: var(--white);
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.preference-preview p {
+  color: #fff7f2;
+  line-height: 1.7;
+}
+
+.preference-form {
+  display: grid;
+  gap: 18px;
+}
+
+.preference-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.preference-message {
+  background: #fff4ee;
+  color: var(--primary);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-weight: 700;
+}
+
+/* FONT SIZE PREFERENCE */
+html.font-small body {
+  font-size: 14px;
+}
+
+html.font-normal body {
+  font-size: 16px;
+}
+
+html.font-large body {
+  font-size: 18px;
+}
+
+/* DARK MODE BASIC THEME */
+html.dark body {
+  background: #201818;
+  color: #f8f2ef;
+}
+
+html.dark .navbar,
+html.dark .footer,
+html.dark .reservasi-index-section,
+html.dark .reservasi-form-section,
+html.dark .profil-owner-section,
+html.dark .preference-section,
+html.dark .customer-dashboard-page {
+  background: #201818;
+}
+
+html.dark .reservasi-summary-card,
+html.dark .table-container,
+html.dark .reservasi-table-container,
+html.dark .reservasi-form-card,
+html.dark .profil-owner-card,
+html.dark .preference-card,
+html.dark .customer-package-card,
+html.dark .customer-feature-card,
+html.dark .live-search-card {
+  background: #2b2020;
+  color: #f8f2ef;
+  border-color: #4a3434;
+}
+
+html.dark .section-title,
+html.dark .preference-preview h2,
+html.dark .customer-package-card h3,
+html.dark .customer-feature-card h3,
+html.dark .live-search-card h2 {
+  color: #fff7f2;
+}
+
+html.dark .section-desc,
+html.dark .customer-package-card p,
+html.dark .customer-feature-card p,
+html.dark .live-search-card p,
+html.dark .preference-message {
+  color: #e8d6cf;
+}
+
+html.dark input,
+html.dark select,
+html.dark textarea {
+  background: #211818;
+  color: #fff7f2;
+  border-color: #5a3a3a;
+}
+
+html.dark .preference-message {
+  background: #3a2929;
+}
+
+@media (max-width: 900px) {
+  .preference-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   PREMIUM DARK MODE LENSART
+   Warm Brown / Deep Mocha Theme
+========================= */
+
+html.dark {
+  --dark-bg: #1f1715;
+  --dark-bg-soft: #2a1f1c;
+  --dark-card: #342622;
+  --dark-card-soft: #3b2b27;
+  --dark-border: #5a4038;
+  --dark-text: #fff7f2;
+  --dark-muted: #d8c4bb;
+  --dark-muted-soft: #b99f94;
+  --dark-accent: #e08a68;
+  --dark-accent-soft: #f3b08f;
+  --dark-success: #7bd6a6;
+  --dark-danger: #ff9b8f;
+}
+
+/* BODY BASIC */
+html.dark body {
+  background: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+/* NAVBAR */
+html.dark .navbar {
+  background: #241916;
+  border-bottom: 1px solid rgba(224, 138, 104, 0.18);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+}
+
+html.dark .logo,
+html.dark .nav-menu a {
+  color: var(--dark-text);
+}
+
+html.dark .nav-menu a:hover,
+html.dark .nav-menu .nav-active {
+  color: var(--dark-accent-soft);
+}
+
+html.dark .nav-menu .nav-active::after {
+  background: var(--dark-accent);
+}
+
+html.dark .nav-user-name {
+  background: rgba(255, 247, 242, 0.08);
+  color: var(--dark-text);
+}
+
+html.dark .nav-avatar {
+  background: var(--dark-accent);
+  color: #fff;
+}
+
+html.dark .nav-logout-button {
+  background: var(--dark-accent);
+  color: #fff;
+}
+
+html.dark .nav-logout-button:hover {
+  background: var(--dark-accent-soft);
+  color: #3a241f;
+}
+
+html.dark .nav-theme-toggle {
+  background: rgba(255, 247, 242, 0.1);
+  color: var(--dark-text);
+}
+
+html.dark .nav-theme-toggle:hover {
+  background: var(--dark-accent);
+}
+
+/* GLOBAL PAGE BACKGROUND */
+html.dark .main-layout,
+html.dark .booking-section,
+html.dark .reservasi-index-section,
+html.dark .reservasi-form-section,
+html.dark .profil-owner-section,
+html.dark .preference-section,
+html.dark .customer-dashboard-page,
+html.dark .landing-page {
+  background: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+/* HERO */
+html.dark .hero,
+html.dark .customer-hero,
+html.dark .public-landing-hero,
+html.dark .landing-hero,
+html.dark .tentang-hero,
+html.dark .kontak-hero {
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.28);
+}
+
+html.dark .hero-overlay {
+  background: linear-gradient(
+    rgba(45, 28, 25, 0.65),
+    rgba(45, 28, 25, 0.65)
+  );
+}
+
+html.dark .hero h1,
+html.dark .hero p,
+html.dark .customer-hero h1,
+html.dark .customer-hero p {
+  color: var(--dark-text);
+}
+
+/* SECTION TITLES */
+html.dark .section-title,
+html.dark h1,
+html.dark h2,
+html.dark h3 {
+  color: var(--dark-text);
+}
+
+html.dark .section-desc,
+html.dark p,
+html.dark li,
+html.dark span {
+  color: var(--dark-muted);
+}
+
+/* CARD UNIVERSAL */
+html.dark .card,
+html.dark .stat-card,
+html.dark .filter-box,
+html.dark .stat-box,
+html.dark .reservasi-summary-card,
+html.dark .table-container,
+html.dark .reservasi-table-container,
+html.dark .reservasi-form-card,
+html.dark .profil-owner-card,
+html.dark .profil-customer-card,
+html.dark .preference-card,
+html.dark .customer-package-card,
+html.dark .customer-feature-card,
+html.dark .customer-hero-card,
+html.dark .live-search-card,
+html.dark .landing-benefit-card,
+html.dark .landing-package-card,
+html.dark .public-studio-card,
+html.dark .about-card,
+html.dark .contact-card {
+  background: var(--dark-card);
+  color: var(--dark-text);
+  border-color: var(--dark-border);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.22);
+}
+
+/* CARD TEXT */
+html.dark .card h3,
+html.dark .stat-card h3,
+html.dark .filter-box h2,
+html.dark .stat-box h2,
+html.dark .reservasi-summary-card h3,
+html.dark .customer-package-card h3,
+html.dark .customer-feature-card h3,
+html.dark .customer-hero-card h3,
+html.dark .live-search-card h2,
+html.dark .preference-card h2,
+html.dark .profil-owner-card h2,
+html.dark .profil-customer-card h2 {
+  color: var(--dark-text);
+}
+
+html.dark .card p,
+html.dark .stat-card p,
+html.dark .filter-box label,
+html.dark .stat-box li,
+html.dark .reservasi-summary-card p,
+html.dark .customer-package-card p,
+html.dark .customer-feature-card p,
+html.dark .customer-hero-card p,
+html.dark .live-search-card p,
+html.dark .preference-card p,
+html.dark .profil-owner-card p,
+html.dark .profil-customer-card p {
+  color: var(--dark-muted);
+}
+
+/* SIDEBAR CHECKBOX AREA */
+html.dark .filter-box label {
+  color: var(--dark-muted);
+}
+
+html.dark .filter-box input[type="checkbox"] {
+  accent-color: var(--dark-accent);
+}
+
+/* STAT / SUMMARY ICONS */
+html.dark .summary-icon,
+html.dark .stat-icon,
+html.dark .customer-package-icon,
+html.dark .customer-feature-icon {
+  background: var(--dark-card-soft);
+  color: var(--dark-accent-soft);
+}
+
+/* PACKAGE CARDS */
+html.dark .customer-package-card,
+html.dark .landing-package-card {
+  border-top-color: var(--dark-accent);
+}
+
+html.dark .customer-package-card strong,
+html.dark .landing-package-card strong,
+html.dark .card-price {
+  color: var(--dark-accent-soft);
+}
+
+html.dark .popular-badge,
+html.dark .landing-popular-badge {
+  background: rgba(123, 214, 166, 0.15);
+  color: var(--dark-success);
+}
+
+/* BUTTONS */
+html.dark .btn-create,
+html.dark .customer-package-button,
+html.dark .public-primary-button {
+  background: var(--dark-accent);
+  color: #fff;
+  box-shadow: 0 12px 26px rgba(224, 138, 104, 0.22);
+}
+
+html.dark .btn-create:hover,
+html.dark .customer-package-button:hover,
+html.dark .public-primary-button:hover {
+  background: var(--dark-accent-soft);
+  color: #33201c;
+}
+
+html.dark .btn-secondary,
+html.dark .public-secondary-button {
+  background: rgba(255, 247, 242, 0.1);
+  color: var(--dark-text);
+  border: 1px solid rgba(255, 247, 242, 0.18);
+}
+
+html.dark .btn-secondary:hover,
+html.dark .public-secondary-button:hover {
+  background: rgba(224, 138, 104, 0.24);
+  color: var(--dark-text);
+}
+
+/* TABLE */
+html.dark .reservasi-table {
+  background: var(--dark-card);
+  color: var(--dark-text);
+}
+
+html.dark .reservasi-table thead {
+  background: #4a302b;
+}
+
+html.dark .reservasi-table th {
+  color: #fff7f2;
+  border-color: var(--dark-border);
+}
+
+html.dark .reservasi-table td {
+  color: var(--dark-muted);
+  border-color: var(--dark-border);
+}
+
+html.dark .reservasi-table tbody tr {
+  background: var(--dark-card);
+}
+
+html.dark .reservasi-table tbody tr:nth-child(even) {
+  background: var(--dark-card-soft);
+}
+
+html.dark .reservasi-table tbody tr:hover {
+  background: #46312c;
+}
+
+html.dark .booking-code,
+html.dark .customer-cell strong,
+html.dark .schedule-cell strong {
+  color: var(--dark-text);
+}
+
+html.dark .customer-cell span,
+html.dark .schedule-cell span {
+  color: var(--dark-muted-soft);
+}
+
+html.dark .package-badge {
+  background: rgba(255, 247, 242, 0.1);
+  color: var(--dark-accent-soft);
+}
+
+/* STATUS BADGES */
+html.dark .status-active {
+  background: rgba(123, 214, 166, 0.14);
+  color: var(--dark-success);
+  border-color: rgba(123, 214, 166, 0.28);
+}
+
+html.dark .status-inactive {
+  background: rgba(255, 155, 143, 0.14);
+  color: var(--dark-danger);
+  border-color: rgba(255, 155, 143, 0.28);
+}
+
+/* ACTION BUTTONS */
+html.dark .btn-detail {
+  background: #6b514a;
+  color: #fff;
+}
+
+html.dark .btn-edit-data {
+  background: #2f8f73;
+  color: #fff;
+}
+
+html.dark .btn-delete-data {
+  background: #c9584e;
+  color: #fff;
+}
+
+/* FORM ELEMENTS */
+html.dark input,
+html.dark select,
+html.dark textarea {
+  background: #241916;
+  color: var(--dark-text);
+  border-color: var(--dark-border);
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: var(--dark-muted-soft);
+}
+
+html.dark input:focus,
+html.dark select:focus,
+html.dark textarea:focus {
+  border-color: var(--dark-accent);
+  box-shadow: 0 0 0 3px rgba(224, 138, 104, 0.18);
+}
+
+html.dark label {
+  color: var(--dark-text);
+}
+
+/* PAGINATION */
+html.dark .pagination-info,
+html.dark .pagination-info p {
+  color: var(--dark-muted);
+}
+
+html.dark .pagination-wrapper nav,
+html.dark .pagination-wrapper span,
+html.dark .pagination-wrapper a {
+  color: var(--dark-text);
+}
+
+/* FLASH MESSAGE */
+html.dark .flash-success {
+  background: rgba(123, 214, 166, 0.15);
+  color: var(--dark-success);
+  border-color: rgba(123, 214, 166, 0.3);
+}
+
+html.dark .flash-error {
+  background: rgba(255, 155, 143, 0.15);
+  color: var(--dark-danger);
+  border-color: rgba(255, 155, 143, 0.3);
+}
+
+/* PREFERENCE PAGE */
+html.dark .preference-preview {
+  background:
+    linear-gradient(135deg, rgba(67, 39, 34, 0.92), rgba(132, 77, 64, 0.72)),
+    url("/images/hero-camera.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+html.dark .preference-message {
+  background: var(--dark-card-soft);
+  color: var(--dark-muted);
+  border: 1px solid var(--dark-border);
+}
+
+/* CUSTOMER CTA */
+html.dark .customer-cta,
+html.dark .landing-cta-section {
+  background: linear-gradient(135deg, #4a302b, #7a4a3f);
+  color: var(--dark-text);
+}
+
+/* FOOTER */
+html.dark .footer {
+  background: #241916;
+  color: var(--dark-muted);
+}
+
+html.dark .footer h3,
+html.dark .footer h4,
+html.dark .footer p,
+html.dark .footer li {
+  color: var(--dark-muted);
+}
+
+/* WEATHER CARD DARK */
+html.dark .lensart-weather-card {
+  background: var(--dark-card);
+  border-color: var(--dark-border);
+}
+
+html.dark .lensart-weather-card-header h2,
+html.dark .lensart-weather-main h3,
+html.dark .lensart-weather-desc-box p {
+  color: var(--dark-text);
+}
+
+html.dark .lensart-weather-card-header p,
+html.dark .lensart-weather-note,
+html.dark .lensart-weather-desc-box span {
+  color: var(--dark-muted);
+}
+
+html.dark .lensart-weather-desc-box,
+html.dark .lensart-weather-loading {
+  background: var(--dark-card-soft);
+  border-color: var(--dark-border);
+}
+
+html.dark .lensart-weather-note {
+  background: #2a1f1c;
+}
+
+html.dark .lensart-weather-main {
+  background: linear-gradient(135deg, #4a302b, #8a574a);
+}
+
+/* EMPTY STATE */
+html.dark .empty-state {
+  color: var(--dark-muted-soft);
+}
+
+/* LINKS */
+html.dark a {
+  color: inherit;
+}
+
+/* SMOOTH TRANSITION */
+body,
+.navbar,
+.footer,
+.card,
+.stat-card,
+.filter-box,
+.stat-box,
+.reservasi-summary-card,
+.table-container,
+.reservasi-form-card,
+.customer-package-card,
+.customer-feature-card,
+.preference-card,
+.live-search-card,
+input,
+select,
+textarea,
+button {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* =========================
+   LENSART DARK MODE REFINEMENT
+   Warm Mocha Premium Theme
+   Letakkan PALING BAWAH app.css
+========================= */
+
+html.dark {
+  --dm-bg: #2a201d;
+  --dm-bg-soft: #332622;
+  --dm-surface: #3b2b27;
+  --dm-surface-soft: #46332e;
+  --dm-border: #6a4a40;
+  --dm-text: #fff7f2;
+  --dm-muted: #e5cfc6;
+  --dm-muted-soft: #c9aaa0;
+  --dm-primary: #f0a07a;
+  --dm-primary-soft: #ffd2bd;
+  --dm-success: #8ad9ad;
+  --dm-danger: #ff9b8f;
+}
+
+/* =========================
+   BASIC PAGE BACKGROUND
+========================= */
+
+html.dark body {
+  background: var(--dm-bg) !important;
+  color: var(--dm-text) !important;
+}
+
+/* Jangan pakai hitam pekat untuk section besar */
+html.dark .main-layout,
+html.dark .booking-section,
+html.dark .reservasi-index-section,
+html.dark .reservasi-form-section,
+html.dark .profil-owner-section,
+html.dark .preference-section,
+html.dark .customer-dashboard-page {
+  background: var(--dm-bg) !important;
+  color: var(--dm-text) !important;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+html.dark .navbar {
+  background: #2b1f1c !important;
+  border-bottom: 1px solid rgba(240, 160, 122, 0.18) !important;
+  box-shadow: 0 8px 22px rgba(35, 22, 19, 0.25) !important;
+}
+
+html.dark .logo,
+html.dark .nav-menu a {
+  color: var(--dm-text) !important;
+}
+
+html.dark .nav-menu a:hover,
+html.dark .nav-menu .nav-active {
+  color: var(--dm-primary-soft) !important;
+}
+
+html.dark .nav-menu .nav-active::after {
+  background: var(--dm-primary) !important;
+}
+
+html.dark .nav-user-name {
+  background: rgba(255, 247, 242, 0.09) !important;
+  color: var(--dm-text) !important;
+}
+
+html.dark .nav-avatar {
+  background: var(--dm-primary) !important;
+  color: #3a241f !important;
+}
+
+html.dark .nav-logout-button {
+  background: var(--dm-primary) !important;
+  color: #3a241f !important;
+}
+
+html.dark .nav-theme-toggle {
+  background: rgba(255, 247, 242, 0.1) !important;
+  color: var(--dm-text) !important;
+}
+
+/* =========================
+   HERO FIX
+   Menghilangkan efek card gelap di tengah hero
+========================= */
+
+html.dark .hero {
+  background-color: var(--dm-bg-soft) !important;
+  box-shadow: 0 14px 32px rgba(35, 22, 19, 0.22) !important;
+}
+
+/* Ini yang memperbaiki efek "card di dalam card" */
+html.dark .hero-overlay {
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+html.dark .hero h1,
+html.dark .hero p,
+html.dark .hero-overlay h1,
+html.dark .hero-overlay p {
+  color: var(--dm-text) !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.22) !important;
+}
+
+html.dark .hero-logo,
+html.dark .hero-logo-fixed {
+  background: rgba(255, 255, 255, 0.96) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 12px 26px rgba(35, 22, 19, 0.22) !important;
+}
+
+/* =========================
+   CARDS / BOXES
+========================= */
+
+html.dark .card,
+html.dark .stat-card,
+html.dark .filter-box,
+html.dark .stat-box,
+html.dark .reservasi-summary-card,
+html.dark .table-container,
+html.dark .reservasi-table-container,
+html.dark .reservasi-form-card,
+html.dark .profil-owner-card,
+html.dark .profil-customer-card,
+html.dark .preference-card,
+html.dark .customer-package-card,
+html.dark .customer-feature-card,
+html.dark .customer-hero-card,
+html.dark .live-search-card,
+html.dark .about-card,
+html.dark .contact-card {
+  background: var(--dm-surface) !important;
+  color: var(--dm-text) !important;
+  border-color: var(--dm-border) !important;
+  box-shadow: 0 10px 24px rgba(35, 22, 19, 0.18) !important;
+}
+
+/* Hilangkan efek putih terlalu terang pada stat card */
+html.dark .dashboard-stat-grid .stat-card,
+html.dark .reservasi-summary-card {
+  background: #f7eee9 !important;
+  color: #4b2f2a !important;
+  border-color: #ead5cb !important;
+  box-shadow: 0 10px 22px rgba(35, 22, 19, 0.16) !important;
+}
+
+html.dark .dashboard-stat-grid .stat-card h3,
+html.dark .dashboard-stat-grid .stat-card p,
+html.dark .reservasi-summary-card h3,
+html.dark .reservasi-summary-card p {
+  color: #4b2f2a !important;
+}
+
+/* =========================
+   TEXT CONTRAST
+========================= */
+
+html.dark .section-title,
+html.dark h1,
+html.dark h2,
+html.dark h3 {
+  color: var(--dm-text) !important;
+}
+
+html.dark .section-desc,
+html.dark p,
+html.dark li,
+html.dark label {
+  color: var(--dm-muted) !important;
+}
+
+html.dark .filter-box h2,
+html.dark .stat-box h2,
+html.dark .card h3,
+html.dark .customer-package-card h3,
+html.dark .customer-feature-card h3,
+html.dark .live-search-card h2 {
+  color: var(--dm-text) !important;
+}
+
+html.dark .filter-box label,
+html.dark .stat-box li,
+html.dark .card p,
+html.dark .customer-package-card p,
+html.dark .customer-feature-card p,
+html.dark .live-search-card p {
+  color: var(--dm-muted) !important;
+}
+
+/* =========================
+   SIDEBAR / FILTER
+========================= */
+
+html.dark .sidebar {
+  background: transparent !important;
+}
+
+html.dark .filter-box,
+html.dark .stat-box {
+  background: var(--dm-surface) !important;
+  border-left-color: var(--dm-primary) !important;
+}
+
+html.dark .filter-box input[type="checkbox"] {
+  accent-color: var(--dm-primary) !important;
+}
+
+/* =========================
+   PACKAGE / BADGE
+========================= */
+
+html.dark .package-badge {
+  background: rgba(255, 247, 242, 0.12) !important;
+  color: var(--dm-primary-soft) !important;
+}
+
+html.dark .card-price,
+html.dark .customer-package-card strong,
+html.dark .landing-package-card strong {
+  color: var(--dm-primary-soft) !important;
+}
+
+html.dark .popular-badge,
+html.dark .landing-popular-badge {
+  background: rgba(138, 217, 173, 0.16) !important;
+  color: var(--dm-success) !important;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+html.dark .reservasi-table {
+  background: var(--dm-surface) !important;
+  color: var(--dm-text) !important;
+}
+
+html.dark .reservasi-table thead {
+  background: #5a3b35 !important;
+}
+
+html.dark .reservasi-table th {
+  color: var(--dm-text) !important;
+  border-color: var(--dm-border) !important;
+}
+
+html.dark .reservasi-table td {
+  color: var(--dm-muted) !important;
+  border-color: var(--dm-border) !important;
+}
+
+html.dark .reservasi-table tbody tr {
+  background: var(--dm-surface) !important;
+}
+
+html.dark .reservasi-table tbody tr:nth-child(even) {
+  background: var(--dm-surface-soft) !important;
+}
+
+html.dark .reservasi-table tbody tr:hover {
+  background: #523b35 !important;
+}
+
+html.dark .booking-code,
+html.dark .customer-cell strong,
+html.dark .schedule-cell strong {
+  color: var(--dm-text) !important;
+}
+
+html.dark .customer-cell span,
+html.dark .schedule-cell span {
+  color: var(--dm-muted-soft) !important;
+}
+
+/* =========================
+   STATUS / ACTION BUTTONS
+========================= */
+
+html.dark .status-active {
+  background: rgba(138, 217, 173, 0.16) !important;
+  color: var(--dm-success) !important;
+  border-color: rgba(138, 217, 173, 0.3) !important;
+}
+
+html.dark .status-inactive {
+  background: rgba(255, 155, 143, 0.16) !important;
+  color: var(--dm-danger) !important;
+  border-color: rgba(255, 155, 143, 0.3) !important;
+}
+
+html.dark .btn-detail {
+  background: #7a5d54 !important;
+  color: #fff7f2 !important;
+}
+
+html.dark .btn-edit-data {
+  background: #3c9b7b !important;
+  color: #fff !important;
+}
+
+html.dark .btn-delete-data {
+  background: #c85d52 !important;
+  color: #fff !important;
+}
+
+/* =========================
+   FORMS
+========================= */
+
+html.dark input,
+html.dark select,
+html.dark textarea {
+  background: #2b1f1c !important;
+  color: var(--dm-text) !important;
+  border-color: var(--dm-border) !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: var(--dm-muted-soft) !important;
+}
+
+html.dark input:focus,
+html.dark select:focus,
+html.dark textarea:focus {
+  border-color: var(--dm-primary) !important;
+  box-shadow: 0 0 0 3px rgba(240, 160, 122, 0.16) !important;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+html.dark .btn-create,
+html.dark .customer-package-button {
+  background: var(--dm-primary) !important;
+  color: #3a241f !important;
+  box-shadow: 0 10px 22px rgba(240, 160, 122, 0.18) !important;
+}
+
+html.dark .btn-create:hover,
+html.dark .customer-package-button:hover {
+  background: var(--dm-primary-soft) !important;
+  color: #3a241f !important;
+}
+
+html.dark .btn-secondary {
+  background: rgba(255, 247, 242, 0.1) !important;
+  color: var(--dm-text) !important;
+  border-color: rgba(255, 247, 242, 0.2) !important;
+}
+
+/* =========================
+   CUSTOMER / CTA
+========================= */
+
+html.dark .customer-cta {
+  background: linear-gradient(135deg, #5a3b35, #8b5a4e) !important;
+  color: var(--dm-text) !important;
+  box-shadow: 0 12px 28px rgba(35, 22, 19, 0.2) !important;
+}
+
+html.dark .customer-cta h2,
+html.dark .customer-cta p {
+  color: var(--dm-text) !important;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+html.dark .footer {
+  background: #2b1f1c !important;
+  color: var(--dm-muted) !important;
+  border-top: 1px solid rgba(240, 160, 122, 0.16) !important;
+}
+
+html.dark .footer h3,
+html.dark .footer h4,
+html.dark .footer p,
+html.dark .footer li {
+  color: var(--dm-muted) !important;
+}
+
+/* =========================
+   WEATHER / MODAL
+========================= */
+
+html.dark .lensart-weather-card {
+  background: var(--dm-surface) !important;
+  border-color: var(--dm-border) !important;
+}
+
+html.dark .lensart-weather-card-header h2,
+html.dark .lensart-weather-desc-box p {
+  color: var(--dm-text) !important;
+}
+
+html.dark .lensart-weather-card-header p,
+html.dark .lensart-weather-note,
+html.dark .lensart-weather-desc-box span {
+  color: var(--dm-muted) !important;
+}
+
+html.dark .lensart-weather-desc-box,
+html.dark .lensart-weather-loading {
+  background: var(--dm-surface-soft) !important;
+  border-color: var(--dm-border) !important;
+}
+
+html.dark .lensart-weather-main {
+  background: linear-gradient(135deg, #5a3b35, #8b5a4e) !important;
+}
+
+html.dark .lensart-weather-note {
+  background: #2f221f !important;
+}
+
+/* =========================
+   PREFERENCE PAGE
+========================= */
+
+html.dark .preference-message {
+  background: var(--dm-surface-soft) !important;
+  color: var(--dm-muted) !important;
+  border: 1px solid var(--dm-border) !important;
+}
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+html.dark .empty-state {
+  color: var(--dm-muted-soft) !important;
+}
+
+/* =========================
+   SMOOTH TRANSITION
+========================= */
+
+html.dark *,
+html.dark *::before,
+html.dark *::after {
+  transition:
+    background-color 0.22s ease,
+    color 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+/* =========================
+   DARK MODE FIX - DASHBOARD SIDEBAR & STAT CARDS
+   Letakkan paling bawah app.css
+========================= */
+
+/* Sidebar area tetap transparan agar tidak terasa berat */
+html.dark .sidebar {
+  background: transparent !important;
+}
+
+/* Filter dan statistik sidebar dibuat lebih premium */
+html.dark .filter-box,
+html.dark .stat-box {
+  background: #3b2b27 !important;
+  border: 1px solid rgba(240, 160, 122, 0.22) !important;
+  border-left: 5px solid #f0a07a !important;
+  border-radius: 20px !important;
+  padding: 24px 22px !important;
+  box-shadow: 0 12px 28px rgba(20, 12, 10, 0.20) !important;
+}
+
+/* Judul sidebar */
+html.dark .filter-box h2,
+html.dark .stat-box h2 {
+  color: #fff7f2 !important;
+  font-size: 24px !important;
+  font-weight: 800 !important;
+  margin-bottom: 18px !important;
+}
+
+/* Label filter */
+html.dark .filter-box label {
+  color: #ead6cd !important;
+  font-weight: 600 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin-bottom: 14px !important;
+}
+
+/* Checkbox filter */
+html.dark .filter-box input[type="checkbox"] {
+  width: 17px !important;
+  height: 17px !important;
+  accent-color: #f0a07a !important;
+  border-color: #f0a07a !important;
+}
+
+/* List statistik */
+html.dark .stat-box ul {
+  padding-left: 0 !important;
+  margin: 0 !important;
+}
+
+html.dark .stat-box li {
+  list-style: none !important;
+  color: #ead6cd !important;
+  line-height: 1.7 !important;
+  margin-bottom: 8px !important;
+  font-weight: 600 !important;
+}
+
+html.dark .stat-box li span {
+  color: #ffd2bd !important;
+  font-weight: 800 !important;
+}
+
+/* =========================
+   DARK MODE FIX - TOP STAT CARDS
+========================= */
+
+/* Card statistik bagian kanan dibuat mocha, bukan putih */
+html.dark .dashboard-stat-grid .stat-card,
+html.dark .dashboard-stat-grid > *,
+html.dark .reservasi-summary-card {
+  background: #3b2b27 !important;
+  color: #fff7f2 !important;
+  border: 1px solid rgba(240, 160, 122, 0.22) !important;
+  border-left: 5px solid #f0a07a !important;
+  box-shadow: 0 12px 28px rgba(20, 12, 10, 0.20) !important;
+}
+
+/* Teks di stat card */
+html.dark .dashboard-stat-grid .stat-card h3,
+html.dark .dashboard-stat-grid .stat-card p,
+html.dark .dashboard-stat-grid .stat-card span,
+html.dark .dashboard-stat-grid .stat-card strong,
+html.dark .reservasi-summary-card h3,
+html.dark .reservasi-summary-card p,
+html.dark .reservasi-summary-card span,
+html.dark .reservasi-summary-card strong {
+  color: #fff7f2 !important;
+}
+
+/* Label kecil di stat card */
+html.dark .dashboard-stat-grid .stat-card h3,
+html.dark .reservasi-summary-card h3 {
+  color: #ead6cd !important;
+  font-weight: 700 !important;
+}
+
+/* Nilai besar di stat card */
+html.dark .dashboard-stat-grid .stat-card p,
+html.dark .reservasi-summary-card p {
+  color: #fff7f2 !important;
+  font-weight: 900 !important;
+}
+
+/* Icon box stat card */
+html.dark .dashboard-stat-grid .stat-icon,
+html.dark .dashboard-stat-grid .summary-icon,
+html.dark .reservasi-summary-card .summary-icon {
+  background: #4a3631 !important;
+  color: #ffd2bd !important;
+  box-shadow: none !important;
+}
+
+/* Kalau komponen stat-card punya wrapper icon berbeda */
+html.dark .dashboard-stat-grid div[class*="icon"] {
+  background-color: #4a3631 !important;
+  color: #ffd2bd !important;
+}
+
+/* =========================
+   SIMPLE PREFERENCE PAGE - LENSART
+========================= */
+
+.preference-simple-section {
+  min-height: calc(100vh - 90px);
+  padding: 64px 24px;
+  background: #f8f2ef;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.preference-simple-card {
+  width: 100%;
+  max-width: 560px;
+  background: var(--white);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 18px 42px rgba(90, 52, 52, 0.14);
+  border: 1px solid #eadbd4;
+}
+
+.preference-simple-header {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--white);
+  padding: 28px 32px;
+}
+
+.preference-simple-header h1 {
+  color: var(--white);
+  font-size: 26px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.preference-simple-header p {
+  color: rgba(255, 247, 242, 0.92);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.preference-simple-form {
+  padding: 32px;
+}
+
+.preference-simple-form .form-group {
+  margin-bottom: 24px;
+}
+
+.preference-simple-form label {
+  display: block;
+  color: var(--primary);
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.preference-simple-form select {
+  width: 100%;
+  border: 1px solid #d9c7bf;
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-size: 16px;
+  color: var(--text);
+  background: #fffaf7;
+  outline: none;
+}
+
+.preference-simple-form select:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 3px rgba(212, 131, 99, 0.16);
+}
+
+.preference-simple-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.preference-simple-actions .btn-create,
+.preference-simple-actions .btn-secondary {
+  min-width: 150px;
+  text-align: center;
+}
+
+.preference-simple-message {
+  margin-top: 18px;
+  background: #fff4ee;
+  color: var(--primary);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* DARK MODE - SIMPLE PREFERENCE */
+html.dark .preference-simple-section {
+  background: #2a201d !important;
+}
+
+html.dark .preference-simple-card {
+  background: #3b2b27 !important;
+  border-color: rgba(240, 160, 122, 0.24) !important;
+  box-shadow: 0 16px 34px rgba(20, 12, 10, 0.22) !important;
+}
+
+html.dark .preference-simple-header {
+  background: linear-gradient(135deg, #5a3b35, #8b5a4e) !important;
+}
+
+html.dark .preference-simple-header h1,
+html.dark .preference-simple-header p {
+  color: #fff7f2 !important;
+}
+
+html.dark .preference-simple-form label {
+  color: #fff7f2 !important;
+}
+
+html.dark .preference-simple-form select {
+  background: #2b1f1c !important;
+  color: #fff7f2 !important;
+  border-color: #6a4a40 !important;
+}
+
+html.dark .preference-simple-message {
+  background: #46332e !important;
+  color: #e5cfc6 !important;
+  border: 1px solid #6a4a40 !important;
+}
+
+@media (max-width: 576px) {
+  .preference-simple-section {
+    padding: 36px 16px;
+  }
+
+  .preference-simple-header,
+  .preference-simple-form {
+    padding: 24px;
+  }
+
+  .preference-simple-actions {
+    flex-direction: column;
+  }
+
+  .preference-simple-actions .btn-create,
+  .preference-simple-actions .btn-secondary {
+    width: 100%;
+  }
+}
+
+.preference-simple-form select {
+  width: 100%;
+  border: 1px solid #d9c7bf;
+  border-radius: 14px;
+  padding: 14px 46px 14px 16px;
+  font-size: 16px;
+  color: var(--text);
+  background-color: #fffaf7;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23634b45' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 18px;
+}
+
+html.dark .preference-simple-form select {
+  background-color: #2b1f1c !important;
+  color: #fff7f2 !important;
+  border-color: #6a4a40 !important;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23f5ddd2' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 18px;
+}
+
+/* =========================
+   FIX DROPDOWN ARROW - PREFERENCE DARK MODE
+========================= */
+
+.preference-simple-form select {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  cursor: pointer !important;
+  padding-right: 46px !important;
+
+  background-color: #fffaf7 !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23634b45' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 16px center !important;
+  background-size: 18px !important;
+}
+
+html.dark .preference-simple-form select {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  cursor: pointer !important;
+  padding-right: 46px !important;
+
+  background-color: #2b1f1c !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23f5ddd2' stroke-width='2.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 16px center !important;
+  background-size: 18px !important;
+}
+
+/* =========================
+   P1 NOMOR 4 - SESSION VISIT COUNTER
+========================= */
+
+.customer-visit-section {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 28px;
+  margin: 34px 0;
+  box-shadow: var(--shadow);
+}
+
+.customer-visit-content {
+  margin-bottom: 22px;
+}
+
+.customer-visit-label {
+  display: inline-block;
+  background: #fff4ee;
+  color: var(--primary);
+  padding: 7px 13px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+
+.customer-visit-content h2 {
+  color: var(--primary);
+  font-size: 28px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.customer-visit-content p {
+  color: #6f615d;
+  line-height: 1.7;
+}
+
+.customer-visit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.customer-visit-card {
+  background: #fffaf7;
+  border: 1px solid #eadbd4;
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.customer-visit-card span {
+  display: block;
+  color: #7a625b;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.customer-visit-card strong {
+  color: var(--primary);
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.customer-visit-reset-form {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* DARK MODE SESSION COUNTER */
+html.dark .customer-visit-section {
+  background: #3b2b27 !important;
+  border-color: rgba(240, 160, 122, 0.22) !important;
+  box-shadow: 0 12px 28px rgba(20, 12, 10, 0.20) !important;
+}
+
+html.dark .customer-visit-label {
+  background: #46332e !important;
+  color: #ffd2bd !important;
+}
+
+html.dark .customer-visit-content h2 {
+  color: #fff7f2 !important;
+}
+
+html.dark .customer-visit-content p {
+  color: #e5cfc6 !important;
+}
+
+html.dark .customer-visit-card {
+  background: #2f221f !important;
+  border-color: #6a4a40 !important;
+}
+
+html.dark .customer-visit-card span {
+  color: #d8c4bb !important;
+}
+
+html.dark .customer-visit-card strong {
+  color: #ffd2bd !important;
+}
+
+@media (max-width: 900px) {
+  .customer-visit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .customer-visit-reset-form {
+    justify-content: flex-start;
+  }
+}

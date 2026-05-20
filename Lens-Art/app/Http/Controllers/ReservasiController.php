@@ -4,16 +4,56 @@ namespace App\Http\Controllers;
 
 use App\Models\Reservasi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReservasiController extends Controller
 {
     public function index()
     {
-        $reservasis = Reservasi::where('user_id', auth()->id())
-            ->latest()
-            ->paginate(10);
+        $reservasis = Reservasi::latest()->paginate(10);
 
         return view('reservasi.index', compact('reservasis'));
+    }
+
+    public function liveSearch(Request $request)
+    {
+        $keyword = $request->input('keyword');
+
+        $reservasis = Reservasi::query()
+            ->when($keyword, function ($query) use ($keyword) {
+                $query->where('kode_booking', 'like', '%' . $keyword . '%')
+                    ->orWhere('nama_pelanggan', 'like', '%' . $keyword . '%')
+                    ->orWhere('email', 'like', '%' . $keyword . '%')
+                    ->orWhere('paket_foto', 'like', '%' . $keyword . '%')
+                    ->orWhere('tanggal_reservasi', 'like', '%' . $keyword . '%');
+            })
+            ->latest()
+            ->limit(20)
+            ->get();
+
+        return response()->json([
+            'success' => true,
+            'count' => $reservasis->count(),
+            'data' => $reservasis->map(function ($reservasi) {
+                return [
+                    'id' => $reservasi->id,
+                    'kode_booking' => $reservasi->kode_booking,
+                    'nama_pelanggan' => $reservasi->nama_pelanggan,
+                    'email' => $reservasi->email,
+                    'paket_foto' => $reservasi->paket_foto,
+                    'tanggal_reservasi' => $reservasi->tanggal_reservasi
+                        ? \Carbon\Carbon::parse($reservasi->tanggal_reservasi)->format('d M Y')
+                        : '-',
+                    'jam_reservasi' => $reservasi->jam_reservasi
+                        ? substr($reservasi->jam_reservasi, 0, 5)
+                        : '-',
+                    'aktif' => (bool) $reservasi->aktif,
+                    'show_url' => route('reservasi.show', $reservasi->id),
+                    'edit_url' => route('reservasi.edit', $reservasi->id),
+                    'delete_url' => route('reservasi.destroy', $reservasi->id),
+                ];
+            }),
+        ]);
     }
 
     public function create()
@@ -83,7 +123,7 @@ class ReservasiController extends Controller
         ]);
 
         $validatedData['harga'] = $daftarHarga[$validatedData['paket_foto']];
-        $validatedData['user_id'] = auth()->id();
+        $validatedData['user_id'] = Auth::id();
 
         Reservasi::create($validatedData);
 
