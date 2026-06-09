@@ -1,9 +1,19 @@
-<x-guest-layout>
+@extends('layouts.guest')
+
+@section('title', 'Login - Studio LensArt')
+
+@section('content')
+<div class="auth-page">
     <div class="auth-card">
         <div class="auth-brand">
             <img src="{{ asset('images/logo-lensart.png') }}" alt="Logo Studio LensArt">
-            <h1>Login Owner</h1>
-            <p>Masuk ke dashboard Studio LensArt untuk mengelola data reservasi pelanggan.</p>
+
+            <h1>Login</h1>
+
+            <p>
+                Masuk ke akun Studio LensArt untuk mengakses fitur reservasi
+                dan dashboard sesuai role pengguna.
+            </p>
         </div>
 
         @if (session('status'))
@@ -24,6 +34,7 @@
 
             <div class="auth-form-group">
                 <label for="email">Email</label>
+
                 <input
                     id="email"
                     type="email"
@@ -32,9 +43,10 @@
                     required
                     autofocus
                     autocomplete="username"
-                    placeholder="Masukkan email owner"
+                    placeholder="Masukkan email"
                     class="{{ $errors->has('email') ? 'input-error' : '' }}"
                 >
+
                 @error('email')
                     <small class="error-text">{{ $message }}</small>
                 @enderror
@@ -42,6 +54,7 @@
 
             <div class="auth-form-group">
                 <label for="password">Password</label>
+
                 <input
                     id="password"
                     type="password"
@@ -51,6 +64,7 @@
                     placeholder="Masukkan password"
                     class="{{ $errors->has('password') ? 'input-error' : '' }}"
                 >
+
                 @error('password')
                     <small class="error-text">{{ $message }}</small>
                 @enderror
@@ -79,4 +93,5 @@
             </p>
         </form>
     </div>
-</x-guest-layout>
+</div>
+@endsection

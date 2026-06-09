@@ -1,39 +1,96 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('password.store') }}">
-        @csrf
+@extends('layouts.guest')
 
-        <!-- Password Reset Token -->
-        <input type="hidden" name="token" value="{{ $request->route('token') }}">
+@section('title', 'Reset Password - Studio LensArt')
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+@section('content')
+<div class="auth-page">
+    <div class="auth-card">
+        <div class="auth-brand">
+            <img src="{{ asset('images/logo-lensart.png') }}" alt="Logo Studio LensArt">
+
+            <h1>Reset Password</h1>
+
+            <p>
+                Masukkan password baru untuk akun Studio LensArt Anda.
+            </p>
         </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+        @if ($errors->any())
+            <div class="auth-alert error">
+                <strong>Reset password belum berhasil.</strong>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+        <form method="POST" action="{{ route('password.store') }}" class="auth-form">
+            @csrf
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required autocomplete="new-password" />
+            <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
+            <div class="auth-form-group">
+                <label for="email">Email</label>
 
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Reset Password') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+                <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    value="{{ old('email', $request->email) }}"
+                    required
+                    autofocus
+                    autocomplete="username"
+                    placeholder="Masukkan email"
+                    class="{{ $errors->has('email') ? 'input-error' : '' }}"
+                >
+
+                @error('email')
+                    <small class="error-text">{{ $message }}</small>
+                @enderror
+            </div>
+
+            <div class="auth-form-group">
+                <label for="password">Password Baru</label>
+
+                <input
+                    id="password"
+                    type="password"
+                    name="password"
+                    required
+                    autocomplete="new-password"
+                    placeholder="Masukkan password baru"
+                    class="{{ $errors->has('password') ? 'input-error' : '' }}"
+                >
+
+                @error('password')
+                    <small class="error-text">{{ $message }}</small>
+                @enderror
+            </div>
+
+            <div class="auth-form-group">
+                <label for="password_confirmation">Konfirmasi Password Baru</label>
+
+                <input
+                    id="password_confirmation"
+                    type="password"
+                    name="password_confirmation"
+                    required
+                    autocomplete="new-password"
+                    placeholder="Ulangi password baru"
+                >
+            </div>
+
+            <button type="submit" class="auth-submit">
+                Simpan Password Baru
+            </button>
+
+            <p class="auth-switch">
+                Sudah ingat password?
+                <a href="{{ route('login') }}">Kembali ke Login</a>
+            </p>
+        </form>
+    </div>
+</div>
+@endsection

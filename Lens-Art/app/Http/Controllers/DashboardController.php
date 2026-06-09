@@ -2,76 +2,264 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Reservasi;
+use App\Models\User;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
+    public function publicIndex()
+    {
+        $paketFotos = $this->getPaketFotos();
+
+        return view('landing', compact('paketFotos'));
+    }
+
     public function index()
     {
-        session()->flash('success', 'Halo! Selamat datang di Studio LensArt, Owner!');
+        $paketFotos = $this->getPaketFotos();
 
-        $filterPakets = [
-            'Paket Indie',
-            'Paket LensArt',
-            'Paket Kalcer',
-            'Paket Custom',
+        // Slot ini harus sama dengan pilihan jam di form reservasi
+        $jamReservasis = [
+            '08:00',
+            '08:30',
+            '09:00',
+            '09:30',
+            '10:00',
+            '10:30',
+            '11:00',
+            '11:30',
+            '12:00',
+            '12:30',
+            '13:00',
+            '13:30',
+            '14:00',
+            '14:30',
+            '15:00',
+            '15:30',
+            '16:00',
+            '16:30',
+            '17:00',
+            '17:30',
+            '18:00',
+            '18:30',
+            '19:00',
+            '19:30',
+            '20:00',
+            '20:30',
         ];
+
+        $reservasis = Reservasi::latest()->get();
+
+        $today = Carbon::today();
+        $currentMonth = now()->month;
+        $currentYear = now()->year;
+
+        /*
+        |--------------------------------------------------------------------------
+        | Statistik Utama Dashboard Owner
+        |--------------------------------------------------------------------------
+        */
+
+        $totalReservasi = $reservasis->count();
+
+        $reservasiHariIni = Reservasi::whereDate('tanggal_reservasi', $today)
+            ->whereIn('status_pembayaran', [
+                'Belum Bayar',
+                'Menunggu Verifikasi',
+                'Lunas',
+            ])
+            ->count();
+
+        $reservasiBulanIni = Reservasi::whereMonth('tanggal_reservasi', $currentMonth)
+            ->whereYear('tanggal_reservasi', $currentYear)
+            ->where('status_pembayaran', 'Lunas')
+            ->get();
+
+        $pendapatanBulanIni = $reservasiBulanIni->sum(function ($reservasi) {
+            return $this->formatHargaKeAngka($reservasi->harga ?? 0);
+        });
+
+        $totalPendapatan = Reservasi::where('status_pembayaran', 'Lunas')
+            ->get()
+            ->sum(function ($reservasi) {
+                return $this->formatHargaKeAngka($reservasi->harga ?? 0);
+            });
+
+        $paketFavorit = $reservasis
+            ->whereNotNull('paket_foto')
+            ->groupBy('paket_foto')
+            ->sortByDesc(function ($items) {
+                return $items->count();
+            })
+            ->keys()
+            ->first();
+
+        if (!$paketFavorit) {
+            $paketFavorit = 'Belum ada data';
+        }
+
+        $customerTerdaftar = User::query()
+            ->where('role', '=', 'customer')
+            ->count();
+
+        /*
+        |--------------------------------------------------------------------------
+        | Jadwal Hari Ini dan Slot Studio
+        |--------------------------------------------------------------------------
+        | Slot dianggap terpakai jika status pembayaran:
+        | - Belum Bayar
+        | - Menunggu Verifikasi
+        | - Lunas
+        |
+        | Status Ditolak tidak mengunci jadwal.
+        |--------------------------------------------------------------------------
+        */
+
+        $jadwalHariIni = Reservasi::whereDate('tanggal_reservasi', $today)
+            ->whereIn('status_pembayaran', [
+                'Belum Bayar',
+                'Menunggu Verifikasi',
+                'Lunas',
+            ])
+            ->orderBy('jam_reservasi')
+            ->get();
+
+        $totalSlotHarian = count($jamReservasis);
+        $slotTerpakaiHariIni = $jadwalHariIni->count();
+        $slotTersedia = max($totalSlotHarian - $slotTerpakaiHariIni, 0);
+
+        if ($slotTerpakaiHariIni >= 10) {
+            $statusStudio = 'Ramai';
+            $statusClass = 'status-warning';
+        } elseif ($slotTerpakaiHariIni >= 5) {
+            $statusStudio = 'Normal';
+            $statusClass = 'status-safe';
+        } else {
+            $statusStudio = 'Longgar';
+            $statusClass = 'status-safe';
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | Data Preview Reservasi
+        |--------------------------------------------------------------------------
+        */
+
+        $reservasiTerbaru = $reservasis->take(5);
+
+        $reservasiDummies = $reservasiTerbaru->map(function ($reservasi) {
+            return [
+                'id' => $reservasi->id,
+                'kode' => $reservasi->kode_booking,
+                'nama' => $reservasi->nama_pelanggan,
+                'email' => $reservasi->email,
+                'instagram' => $reservasi->username_instagram ?? '-',
+                'no_hp' => $reservasi->no_hp ?? '-',
+                'jumlah_orang' => $reservasi->jumlah_orang,
+                'paket' => $reservasi->paket_foto,
+                'harga' => $reservasi->harga,
+                'tanggal' => $reservasi->tanggal_reservasi,
+                'jam' => $reservasi->jam_reservasi,
+                'status_pembayaran' => $reservasi->status_pembayaran ?? 'Belum Bayar',
+            ];
+        })->toArray();
+
+        /*
+        |--------------------------------------------------------------------------
+        | Card Statistik untuk View
+        |--------------------------------------------------------------------------
+        */
 
         $statCards = [
             [
                 'judul' => 'Total Reservasi',
-                'nilai' => '5',
-                'ikon' => '📅',
+                'nilai' => $totalReservasi,
+                'keterangan' => 'Semua data reservasi pelanggan',
+                'ikon' => 'calendar',
                 'warna' => 'stat-brown',
             ],
             [
-                'judul' => 'Total Pendapatan',
-                'nilai' => 'Rp380.000',
-                'ikon' => '💰',
+                'judul' => 'Reservasi Hari Ini',
+                'nilai' => $reservasiHariIni,
+                'keterangan' => now()->format('d M Y'),
+                'ikon' => 'clock',
                 'warna' => 'stat-orange',
             ],
             [
-                'judul' => 'Paket Favorit',
-                'nilai' => 'Paket LensArt',
-                'ikon' => '📸',
+                'judul' => 'Pendapatan Bulan Ini',
+                'nilai' => 'Rp' . number_format($pendapatanBulanIni, 0, ',', '.'),
+                'keterangan' => now()->format('F Y'),
+                'ikon' => 'income',
                 'warna' => 'stat-green',
+            ],
+            [
+                'judul' => 'Paket Favorit',
+                'nilai' => $paketFavorit,
+                'keterangan' => 'Paling sering dipilih pelanggan',
+                'ikon' => 'package',
+                'warna' => 'stat-red',
             ],
         ];
 
-        $sidebarStatistik = [
+        /*
+        |--------------------------------------------------------------------------
+        | Data Statistik Tambahan
+        |--------------------------------------------------------------------------
+        */
+
+        $insightStudio = [
             [
                 'label' => 'Total Reservasi',
-                'id' => 'totalReservasi',
-                'nilai' => '5',
-                'class' => '',
+                'nilai' => $totalReservasi,
             ],
             [
                 'label' => 'Total Pendapatan',
-                'id' => 'totalPendapatan',
-                'nilai' => 'Rp380.000',
-                'class' => '',
+                'nilai' => 'Rp' . number_format($totalPendapatan, 0, ',', '.'),
+            ],
+            [
+                'label' => 'Customer Terdaftar',
+                'nilai' => $customerTerdaftar,
             ],
             [
                 'label' => 'Paket Terpopuler',
-                'id' => 'paketTerpopuler',
-                'nilai' => 'Paket LensArt',
-                'class' => '',
+                'nilai' => $paketFavorit,
             ],
             [
-                'label' => 'Jadwal Tersedia Hari Ini',
-                'id' => 'jadwalTersedia',
-                'nilai' => '14',
-                'class' => '',
+                'label' => 'Slot Tersedia Hari Ini',
+                'nilai' => $slotTersedia,
             ],
             [
-                'label' => 'Status Slot Hari Ini',
-                'id' => 'statusSlot',
-                'nilai' => 'Slot aman',
-                'class' => 'status-safe',
+                'label' => 'Status Studio Hari Ini',
+                'nilai' => $statusStudio,
             ],
         ];
 
-        $paketFotos = [
+        return view('dashboard', compact(
+            'paketFotos',
+            'jamReservasis',
+            'reservasis',
+            'reservasiDummies',
+            'reservasiTerbaru',
+            'jadwalHariIni',
+            'statCards',
+            'insightStudio',
+            'totalReservasi',
+            'reservasiHariIni',
+            'pendapatanBulanIni',
+            'totalPendapatan',
+            'paketFavorit',
+            'customerTerdaftar',
+            'slotTersedia',
+            'slotTerpakaiHariIni',
+            'statusStudio',
+            'statusClass'
+        ));
+    }
+
+    private function getPaketFotos(): array
+    {
+        return [
             [
                 'nama' => 'Paket Indie',
                 'deskripsi' => 'Durasi 10 menit sesi foto, 1 lembar print, dan softcopy file.',
@@ -93,94 +281,14 @@ class DashboardController extends Controller
                 'harga' => 'Rp150.000',
             ],
         ];
+    }
 
-        $reservasiDummies = [
-            [
-                'kode' => 'BK001',
-                'nama' => 'Alya Putri',
-                'email' => 'alya@gmail.com',
-                'instagram' => '@alyaputri',
-                'no_hp' => '081234567890',
-                'jumlah_orang' => 2,
-                'paket' => 'Paket Indie',
-                'harga' => 'Rp50.000',
-                'tanggal' => '2026-05-12',
-                'jam' => '10:00',
-            ],
-            [
-                'kode' => 'BK002',
-                'nama' => 'Bima Saputra',
-                'email' => 'bima@gmail.com',
-                'instagram' => '@bimasaputra',
-                'no_hp' => '081234567891',
-                'jumlah_orang' => 3,
-                'paket' => 'Paket LensArt',
-                'harga' => 'Rp80.000',
-                'tanggal' => '2026-05-13',
-                'jam' => '13:00',
-            ],
-            [
-                'kode' => 'BK003',
-                'nama' => 'Citra Lestari',
-                'email' => 'citra@gmail.com',
-                'instagram' => '@citralestari',
-                'no_hp' => '081234567892',
-                'jumlah_orang' => 4,
-                'paket' => 'Paket Kalcer',
-                'harga' => 'Rp120.000',
-                'tanggal' => '2026-05-14',
-                'jam' => '15:00',
-            ],
-            [
-                'kode' => 'BK004',
-                'nama' => 'Doni Pratama',
-                'email' => 'doni@gmail.com',
-                'instagram' => '@donipratama',
-                'no_hp' => '081234567893',
-                'jumlah_orang' => 2,
-                'paket' => 'Paket Indie',
-                'harga' => 'Rp50.000',
-                'tanggal' => '2026-05-15',
-                'jam' => '09:00',
-            ],
-            [
-                'kode' => 'BK005',
-                'nama' => 'Eva Maharani',
-                'email' => 'eva@gmail.com',
-                'instagram' => '@evamaharani',
-                'no_hp' => '081234567894',
-                'jumlah_orang' => 4,
-                'paket' => 'Paket LensArt',
-                'harga' => 'Rp80.000',
-                'tanggal' => '2026-05-16',
-                'jam' => '11:00',
-            ],
-        ];
+    private function formatHargaKeAngka($harga): int
+    {
+        if (is_numeric($harga)) {
+            return (int) $harga;
+        }
 
-        $jamReservasis = [
-            '08:00',
-            '09:00',
-            '10:00',
-            '11:00',
-            '12:00',
-            '13:00',
-            '14:00',
-            '15:00',
-            '16:00',
-            '17:00',
-            '18:00',
-            '19:00',
-            '20:00',
-            '21:00',
-        ];
-
-        return view('dashboard', compact(
-            'filterPakets',
-            'statCards',
-            'sidebarStatistik',
-            'paketFotos',
-            'reservasiDummies',
-            'jamReservasis'
-        ));
+        return (int) preg_replace('/[^0-9]/', '', $harga);
     }
 }

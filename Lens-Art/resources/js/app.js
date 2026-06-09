@@ -6,6 +6,10 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
+/* =========================
+   BURGER MENU
+========================= */
+
 document.addEventListener("DOMContentLoaded", () => {
   setupBurgerMenu();
 });
@@ -40,13 +44,18 @@ const setupBurgerMenu = () => {
   });
 };
 
+/* =========================
+   COOKIE HELPER
+========================= */
+
 window.setCookie = function (name, value, days = 30) {
   const date = new Date();
   date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
 
   const expires = "expires=" + date.toUTCString();
 
-  document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/";
+  document.cookie =
+    name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/";
 };
 
 window.getCookie = function (name) {
@@ -66,8 +75,13 @@ window.getCookie = function (name) {
 };
 
 window.deleteCookie = function (name) {
-  document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;";
+  document.cookie =
+    name + "=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;";
 };
+
+/* =========================
+   THEME TOGGLE BUTTON
+========================= */
 
 document.addEventListener("DOMContentLoaded", () => {
   const themeToggleButton = document.getElementById("themeToggleButton");
@@ -97,9 +111,9 @@ document.addEventListener("DOMContentLoaded", () => {
   updateThemeIcon();
 });
 
-// =========================
-// DISPLAY PREFERENCE PAGE
-// =========================
+/* =========================
+   DISPLAY PREFERENCE PAGE
+========================= */
 
 document.addEventListener("DOMContentLoaded", () => {
   const preferenceForm = document.getElementById("preferenceForm");
@@ -111,14 +125,10 @@ document.addEventListener("DOMContentLoaded", () => {
   function applyTheme(theme) {
     const htmlElement = document.documentElement;
 
+    htmlElement.classList.remove("dark");
+
     if (theme === "dark") {
       htmlElement.classList.add("dark");
-      return;
-    }
-
-    if (theme === "light") {
-      htmlElement.classList.remove("dark");
-      return;
     }
 
     if (theme === "system") {
@@ -126,8 +136,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (systemDark) {
         htmlElement.classList.add("dark");
-      } else {
-        htmlElement.classList.remove("dark");
       }
     }
   }
@@ -139,15 +147,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (fontSize === "small") {
       htmlElement.classList.add("font-small");
-      return;
-    }
-
-    if (fontSize === "large") {
+    } else if (fontSize === "large") {
       htmlElement.classList.add("font-large");
-      return;
+    } else {
+      htmlElement.classList.add("font-normal");
     }
-
-    htmlElement.classList.add("font-normal");
   }
 
   function syncPreferenceForm() {
@@ -168,54 +172,91 @@ document.addEventListener("DOMContentLoaded", () => {
 
   syncPreferenceForm();
 
+  if (themePreference) {
+    themePreference.addEventListener("change", () => {
+      applyTheme(themePreference.value);
+    });
+  }
+
+  if (fontPreference) {
+    fontPreference.addEventListener("change", () => {
+      applyFontSize(fontPreference.value);
+    });
+  }
+
   if (preferenceForm) {
     preferenceForm.addEventListener("submit", async (event) => {
-        event.preventDefault();
+      event.preventDefault();
 
-        const selectedTheme = themePreference.value;
-        const selectedFontSize = fontPreference.value;
+      const selectedTheme = themePreference.value;
+      const selectedFontSize = fontPreference.value;
 
-        const csrfToken = document
+      applyTheme(selectedTheme);
+      applyFontSize(selectedFontSize);
+
+      setCookie("theme", selectedTheme, 30);
+      setCookie("font_size", selectedFontSize, 30);
+
+      const csrfToken = document
         .querySelector('meta[name="csrf-token"]')
         ?.getAttribute("content");
 
-        if (preferenceMessage) {
+      if (preferenceMessage) {
         preferenceMessage.textContent = "Menyimpan preferensi...";
-        }
+      }
 
-        try {
+      try {
         const response = await fetch("/preferensi/simpan", {
-            method: "POST",
-            headers: {
+          method: "POST",
+          headers: {
             "Content-Type": "application/json",
             "X-CSRF-TOKEN": csrfToken,
             Accept: "application/json",
-            },
-            body: JSON.stringify({
+          },
+          body: JSON.stringify({
             theme: selectedTheme,
             font_size: selectedFontSize,
-            }),
+          }),
         });
 
         if (!response.ok) {
-            throw new Error("Gagal menyimpan preferensi.");
+          throw new Error("Gagal menyimpan preferensi.");
         }
 
         const result = await response.json();
 
-        applyTheme(result.data.theme);
-        applyFontSize(result.data.font_size);
+        const savedTheme =
+          result.data?.theme_baru || result.data?.theme || selectedTheme;
+
+        const savedFontSize =
+          result.data?.font_size_baru || result.data?.font_size || selectedFontSize;
+
+        setCookie("theme", savedTheme, 30);
+        setCookie("font_size", savedFontSize, 30);
+
+        applyTheme(savedTheme);
+        applyFontSize(savedFontSize);
+
+        if (themePreference) {
+          themePreference.value = savedTheme;
+        }
+
+        if (fontPreference) {
+          fontPreference.value = savedFontSize;
+        }
 
         if (preferenceMessage) {
-            preferenceMessage.textContent = result.message;
+          preferenceMessage.textContent =
+            result.message || "Preferensi berhasil disimpan.";
         }
-        } catch (error) {
+      } catch (error) {
         if (preferenceMessage) {
-            preferenceMessage.textContent = "Preferensi gagal disimpan. Silakan coba lagi.";
+          preferenceMessage.textContent =
+            "Preferensi tetap diterapkan, tetapi gagal disimpan ke server.";
         }
-        }
+      }
     });
-    }
+  }
 
   if (resetPreferenceButton) {
     resetPreferenceButton.addEventListener("click", () => {
@@ -234,7 +275,8 @@ document.addEventListener("DOMContentLoaded", () => {
       applyFontSize("normal");
 
       if (preferenceMessage) {
-        preferenceMessage.textContent = "Preferensi berhasil direset ke pengaturan awal.";
+        preferenceMessage.textContent =
+          "Preferensi berhasil direset ke pengaturan awal.";
       }
     });
   }

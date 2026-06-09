@@ -2,8 +2,8 @@
     <div class="auth-card">
         <div class="auth-brand">
             <img src="{{ asset('images/logo-lensart.png') }}" alt="Logo Studio LensArt">
-            <h1>Register Owner</h1>
-            <p>Buat akun owner untuk mengakses sistem pengelolaan reservasi Studio LensArt.</p>
+            <h1>Register</h1>
+            <p>Buat akun untuk mengakses sistem reservasi Studio LensArt.</p>
         </div>
 
         @if ($errors->any())
@@ -26,7 +26,7 @@
                     required
                     autofocus
                     autocomplete="name"
-                    placeholder="Masukkan nama owner"
+                    placeholder="Masukkan nama"
                     class="{{ $errors->has('name') ? 'input-error' : '' }}"
                 >
                 @error('name')
@@ -43,7 +43,7 @@
                     value="{{ old('email') }}"
                     required
                     autocomplete="username"
-                    placeholder="Masukkan email owner"
+                    placeholder="Masukkan email"
                     class="{{ $errors->has('email') ? 'input-error' : '' }}"
                 >
                 @error('email')

@@ -65,18 +65,18 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
-
     /*
     |--------------------------------------------------------------------------
-    | Application Locale Configuration
+    | Application Timezone
     |--------------------------------------------------------------------------
     |
-    | The application locale determines the default locale that will be used
-    | by Laravel's translation / localization methods. This option can be
-    | set to any locale for which you plan to have translation strings.
+    | Here you may specify the default timezone for your application, which
+    | will be used by the PHP date and date-time functions. The timezone
+    | is set to "UTC" by default as it is suitable for most use cases.
     |
     */
+
+    'timezone' => env('APP_TIMEZONE', 'Asia/Jakarta'),
 
     'locale' => env('APP_LOCALE', 'en'),
 

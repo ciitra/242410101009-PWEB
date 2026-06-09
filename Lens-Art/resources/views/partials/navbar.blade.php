@@ -13,7 +13,7 @@
             @if (auth()->user()->role === 'owner')
                 {{-- NAVBAR OWNER --}}
                 <li>
-                    <a href="{{ route('dashboard') }}#beranda" class="{{ request()->routeIs('dashboard') || request()->routeIs('home') ? 'nav-active' : '' }}">
+                    <a href="{{ route('dashboard') }}#beranda" class="{{ request()->routeIs('dashboard') ? 'nav-active' : '' }}">
                         Beranda
                     </a>
                 </li>
@@ -27,12 +27,6 @@
                 <li>
                     <a href="{{ route('reservasi.index') }}" class="{{ request()->routeIs('reservasi.*') ? 'nav-active' : '' }}">
                         Reservasi
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{{ route('dashboard') }}#statistik">
-                        Statistik
                     </a>
                 </li>
 
@@ -53,6 +47,7 @@
                         Kontak
                     </a>
                 </li>
+
             @else
                 {{-- NAVBAR CUSTOMER --}}
                 <li>
@@ -92,12 +87,13 @@
                 </li>
             @endif
 
+            {{-- MENU AUTH --}}
             <li>
                 <a href="{{ route('preferensi') }}" class="{{ request()->routeIs('preferensi') ? 'nav-active' : '' }}">
                     Preferensi
                 </a>
             </li>
-            
+
             <li class="nav-user">
                 <span class="nav-user-name">
                     <span class="nav-avatar">
@@ -124,8 +120,9 @@
                     <span id="themeToggleIcon">🌙</span>
                 </button>
             </li>
-        @else
 
+        @else
+            {{-- NAVBAR GUEST / SEBELUM LOGIN --}}
             <li>
                 <a href="{{ route('home') }}#beranda" class="{{ request()->routeIs('home') ? 'nav-active' : '' }}">
                     Beranda
@@ -133,8 +130,14 @@
             </li>
 
             <li>
-                <a href="{{ route('home') }}#paket">
+                <a href="{{ route('home') }}#paket-foto">
                     Paket Foto
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('login') }}">
+                    Reservasi
                 </a>
             </li>
 
@@ -147,6 +150,12 @@
             <li>
                 <a href="{{ route('kontak') }}" class="{{ request()->routeIs('kontak') ? 'nav-active' : '' }}">
                     Kontak
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('preferensi') }}" class="{{ request()->routeIs('preferensi') ? 'nav-active' : '' }}">
+                    Preferensi
                 </a>
             </li>
 
